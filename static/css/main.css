@@ -1,0 +1,171 @@
+.channelpage {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+}
+
+.bg-img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url("../img/channellist-top.jpg");
+  background-position: center center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 1;
+  opacity: 0.2;
+}
+
+
+.main-content {
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.channel-title {
+  display: flex;
+  gap: 35px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.channel-title h1 {
+ font-size: 25px;
+ font-weight: normal;
+}
+
+.channel-title button {
+  background-color: var(--snow);
+  color: var(--kuro);
+  text-align: center;
+}
+
+.channel-title button:hover {
+  background-color: var(--snow);
+}
+
+.channel-box {
+  min-height: 80%;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.channel-box li {
+  list-style: none;
+  padding-top: 5px;
+  margin-bottom: 5px;
+  padding-bottom: 3px;
+  padding-right: 16px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top:0.5px solid;
+}
+
+.channel-box li:hover {
+  cursor: pointer;
+}
+
+.channel-box li a {
+  color: var(--kuro);
+}
+
+.channel-box li a:hover {
+  color: var(--dark_pink);
+}
+
+.pagination-container,
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pagination-container {
+  width: 100%;
+  border-bottom: 2px solid var(--grey);
+  box-shadow: 0 32px 30px -30px var(--wood);
+}
+
+.pagination {
+  padding-left: 0;
+}
+
+.pagination li.colored {
+  background-color: var(--kuro);
+  color: var(--snow);
+}
+
+#prev,
+#next,
+.pagination li {
+  padding: 16px;
+}
+
+#prev:hover,
+#next:hover {
+  cursor: pointer;
+}
+
+.prev:hover .next:hover {
+  cursor: pointer;
+  background-color: var(--kuro);
+  color: var(--snow);
+}
+
+@media screen and (max-width: 639px) {
+  .main-content {
+    width: 90vw;
+  }
+  .channel-title {
+    flex-direction: column;
+    gap: 0;
+  }
+  .channel-title h1 {
+    text-align: center;
+  }
+  .channel-box {
+    width: 100%;
+  }
+  .channel-box li a {
+    font-size: 16px;
+  }
+}
+
+@media only screen and (min-width: 640px) and (max-width: 1023px) {
+  .main-content {
+    width: 70vw;
+  }
+  .channel-title {
+    flex-direction: column;
+  }
+  .channel-title h1 {
+    text-align: center;
+  }
+  .channel-box {
+    width: 80%;
+  }
+  .channel-box li a {
+    font-size: 16px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .main-content {
+    width: 70vw;
+  }
+  .channel-title {
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  .channel-box {
+    width: 80%;
+  }
+}

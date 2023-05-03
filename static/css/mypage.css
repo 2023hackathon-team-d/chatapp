@@ -1,0 +1,134 @@
+.mypageall {
+    background-color: #FFFFFF;
+    font-family: 'Baloo Bhai 2';
+    color: #000000;
+    position:relative;
+    height: 100vh;
+    z-index: 10;
+    line-height: 1.5;
+    padding-top: 0.1em;
+    padding-left: 0.1em;
+  }
+
+  .mypage-img {
+    height: 100%;
+    background-position: top center;
+    background-repeat:  no-repeat; 
+    background-image: url("../img/mypage-top.jpg");
+    background-size: 75%;
+  }
+
+  .selfinfo {
+    padding-top: 5%;
+    text-align: center;
+  }
+
+  .selfinfo h1 {
+    background-color: salmon;
+    padding: 0.25em;
+    width: 20%;
+    margin: 0.25em auto;
+
+  }
+
+  .selfinfo a {
+    display: inline;
+    text-align: center center;
+    position: relative;
+    top: 3px;
+    left: 10px;
+    padding-right: 5px;
+    font-size: 25px;
+  }
+  
+  .mychannel {
+    display: block;
+    width: 80%;
+    height: 22%;
+    background-color: #F5F5F5;
+    position: center center;
+    margin: 150px auto;
+    margin-bottom: 10px;
+  }
+
+  .mychannel p {
+    padding: 10px 10px 0px 10px;
+  }
+
+  .mychannel ul{
+    background-color: #FFFFFF;
+    list-style-type: circle;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .mychannel ul li{
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }
+
+  .mytasku {
+    display: block;
+    width: 80%;
+    height: 30%;
+    background-color: #F5F5F5;
+    position: center center;
+    margin: 10px auto;
+  }
+
+  .mytasku p {
+    padding: 10px 10px 0px 10px;
+    margin-bottom: 0px;
+  }
+
+  .mytasku-midasi {
+    padding: 10px 0px 0px 0px;
+  }
+
+
+  .mytasku ul{
+    background-color: #FFFFFF;
+    list-style-type: none;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 0px;
+  }
+
+  .mytasku ul li{
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }
+
+  .taskuname {
+    padding-left: 50px;
+  }
+
+  .start {
+    padding-left:500px;
+  }
+
+  .finish {
+    padding-left:100px;
+  }
+
+  .Assignee {
+    padding-left:100px;
+  }
+
+  .projects {
+    padding-left: 100px;
+  }
+
+  .list-todo::before {
+    content:  "";/* 空の要素作成 */
+    width: 20px;                            /* 幅指定 */
+    height: 20px;                           /* 高さ指定 */
+    display:  inline-block;                 /* インラインブロックにする */
+    position:  relative;                    /* アイコンの位置を調整 */
+    top: 0px;                             /* アイコンの位置を調整 */
+    margin-right: 5px;                      /* 余白指定 */
+    background-image:  url("../img/stop-outline.svg");  /* アイコン指定 */
+    background-size:  contain;              /* アイコンの大きさ指定 */
+    background-repeat:  no-repeat;          /* アイコンをリピートしないようにする */
+    vertical-align: top; 
+  }

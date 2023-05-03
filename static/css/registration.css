@@ -1,0 +1,189 @@
+.registration-wrapper.login {
+  background-color: var(--snow);
+}
+
+.registration-wrapper.signup {
+  background-color: var(--snow);
+}
+
+.registration-main {
+  /* 高さの指定 */
+  height: 100vh;
+  /* はみ出した場合の処理 → はみ出た場合は隠す*/
+  overflow: hidden;
+  /* フォントの種類 */
+  font-family: 'Baloo Bhai 2';
+  /* 水平方向の表示位置 */
+  text-align: center;
+  /* 文字の色 */
+  color: var(--kuro);
+  /* フォントの太さ */
+  font-weight: 400;
+  /* フォントのサイズ */
+  font-size: 20px;
+  /* 行の高さ */
+  line-height: 1.5;
+  padding-top: 0.1em;
+  padding-left: 0.1em;
+}
+
+.registration-title {
+  color: var(--kuro);
+  font-size: 100px;
+  margin-bottom: 0;
+  margin: 0;
+  vertical-align: middle;
+}
+
+.registration-title-signup {
+  color: var(--kuro);
+  font-size: 45px;
+  margin-bottom: 0;
+  margin: 0;
+  vertical-align: middle;
+}
+
+.registration-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  min-width: 50%;
+  /* どのメディアからみてもこれ以上小さくならない */
+}
+
+.registration-main.login-main {
+  height: 100%;
+  width: 100%;
+  background-position: center center;
+  background-size: contain;
+  background-repeat:  no-repeat; 
+  background-image: url("../img/login-harfcircle.jpg");
+  object-fit: cover;
+}
+
+.registration-main.signup-main {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  background-size: contain;
+  background-position: top center;
+  background-repeat:  no-repeat; 
+  background-image: url("../img/accout-page.jpg");
+  vertical-align:top;
+}
+
+
+
+.username-form{
+  width: 30%;
+  margin: 0 auto;
+  min-width: 30%;
+  background:rgba(255,255,255,0.8);
+}
+
+
+.email-form{
+  width: 30%;
+  margin: 0 auto;
+  min-width: 30%;
+  background:rgba(255,255,255,0.8);
+}
+
+
+
+.password-form{
+  width: 30%;
+  margin: 0 auto;
+  min-width: 30%;
+  background:rgba(255,255,255,0.8);
+}
+
+
+
+.registration-form input {
+  margin-bottom: 10px;
+  line-height: 50px;
+  width: 100%;
+  padding-bottom: 1px;
+  border-bottom: solid 1px var(--kuro);
+  background-color: transparent
+}
+
+.registration-form input:hover {
+  padding-bottom: 0;
+  background-color: var(--mouse);
+}
+
+.registration-form input:focus {
+  padding-bottom: 0;
+  background-color: var(--lightmouse)
+}
+
+
+
+.switch-register-mode {
+  color: var(--kuro);
+  line-height: 55px;
+  font-size: 30px;
+  padding-bottom: 1px;
+}
+
+.switch-register-mode:hover {
+  color: var(--kuro);
+  border-bottom: 1px solid var(--kuro);
+  padding-bottom: 0;
+}
+
+button{
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  gap: 10px;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 55px;
+}
+
+button:hover {
+  background-color: var(--lightmouse)
+}
+
+
+.flashes {
+  line-height: 40px;
+  margin-top: 0;
+  position: fixed;
+  right: 40px;
+  bottom: 20px;
+  text-align: center;
+  font-size: 18px;
+  color: red;
+}
+
+.infinite-icon {
+  font-size: 100px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+
+
+::placeholder {
+  color: var(--kuro);
+}
+
+@media only screen and (min-width: 640px) and (max-width: 1023px) {
+  .registration-main {
+    font-size: 150px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .registration-main {
+    font-size: 150px;
+  }
+}

@@ -1,0 +1,87 @@
+body {
+  font-family: 'Baloo Bhai 2', cursive;
+  padding: 0;
+  margin: 0;
+}
+
+.navigation {
+  /* 特定の位置に固定して配置する。スクロールしても変わらない。 */
+  position: fixed;
+  height: 70px;
+  width: 100%;
+  text-align: center;
+  z-index: 20;
+}
+
+
+.navigation ul {
+  display: flex;
+  text-align: center center;
+  list-style :none;
+  align-items: center;
+  background-color: var(--kuro);
+  margin: 0;
+}
+
+.navigation ul li {
+  background-color: #000000;
+  list-style :none;
+  text-align: center;
+}
+
+.list.active{
+  padding-right: 15px;
+  padding-left: 3px;
+  display: flex;
+  text-align: center;
+}
+
+.list.active.logout{
+  padding-right: 15px;
+  padding-left: 3px;
+  display: flex;
+  text-align: center;
+  margin: 0 0 0 auto;
+}
+
+.navigation ul li a {
+  text-decoration: none;
+  font-weight: bold;
+  color: 	#FFFFFF;
+  font-weight: 400;
+  font-size: 1.5em;
+  display: inline;
+  padding: 5px;
+  text-align: center;
+}
+
+.navigation ul li a:hover {
+  background-color: #FFFFFF;
+  color: 	#000000;
+}
+
+
+.navigation ul li a .title {
+  text-align: center center;
+  display: inline;
+}
+
+.navigation ul li a .icon {
+  display: inline;
+  text-align: center center;
+  position: relative;
+  top: 5px;
+  left: 5px;
+  padding-right: 5px;
+}
+
+
+@media screen and (max-width: 639px) {
+  .navigation {
+    display: none;
+  }
+
+  .main-container {
+    padding-left: 0;
+  }
+}
