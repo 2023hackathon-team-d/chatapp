@@ -21,77 +21,63 @@
   .selfinfo {
     padding-top: 5%;
     text-align: center;
-  }
-
-  .selfinfo h1 {
-    background-color: salmon;
-    padding: 0.25em;
-    width: 20%;
-    margin: 0.25em auto;
 
   }
 
-  .selfinfo a {
-    display: inline;
-    text-align: center center;
-    position: relative;
-    top: 3px;
-    left: 10px;
-    padding-right: 5px;
-    font-size: 25px;
+  .namaenoichi {
+    display:flex;
+    width: 30%;
+    margin: 0 auto;
   }
+
+  .namaenoichi h1 {
+    flex-grow: 1;
+  }
+
+  .namaenoichi button {
+  background-color: transparent;
+  color: var(--kuro);
+  text-align: center;
+}
+
+.selfinfo p {
+  margin:0;
+  padding:3px;
+}
   
-  .mychannel {
-    display: block;
-    width: 80%;
-    height: 22%;
-    background-color: #F5F5F5;
-    position: center center;
-    margin: 150px auto;
-    margin-bottom: 10px;
-  }
-
-  .mychannel p {
-    padding: 10px 10px 0px 10px;
-  }
-
-  .mychannel ul{
-    background-color: #FFFFFF;
-    list-style-type: circle;
-    margin-left: 20px;
-    margin-right: 20px;
-  }
-
-  .mychannel ul li{
-    margin-bottom: 10px;
-    margin-top: 10px;
-  }
 
   .mytasku {
     display: block;
-    width: 80%;
+    width: 100%;
     height: 30%;
-    background-color: #F5F5F5;
     position: center center;
-    margin: 10px auto;
+    background-color: var(--snow);
+    margin-top: 7%;
   }
 
   .mytasku p {
-    padding: 10px 10px 0px 10px;
+    padding: 10px 10px 10px 10px;
     margin-bottom: 0px;
+    font-size: 15px;
+    background-color: var(--lightmouse);
   }
 
   .mytasku-midasi {
     padding: 10px 0px 0px 0px;
+    color: black;
+    border-bottom: 1px solid;
+    width:95%;
+    margin:0px auto;
   }
 
 
   .mytasku ul{
-    background-color: #FFFFFF;
+    background-color: var(--snow);
     list-style-type: none;
-    margin-left: 20px;
-    margin-right: 20px;
-    margin-top: 0px;
+    display: flex;
+    margin-top:3px;
+    margin-bottom:3px;
+
   }
 
   .mytasku ul li{
@@ -100,23 +86,25 @@
   }
 
   .taskuname {
-    padding-left: 50px;
+    padding-left:5%;
+    color: #000000;
+    font-size: 15px;
+    box-sizing: border-box;
   }
 
-  .start {
-    padding-left:500px;
+  .limit {
+    padding-left:60%;
+    color: #000000;
+    font-size: 15px;
+    box-sizing: border-box;
   }
 
-  .finish {
-    padding-left:100px;
-  }
-
-  .Assignee {
-    padding-left:100px;
-  }
 
   .projects {
-    padding-left: 100px;
+    padding-left:10%;
+    color: #000000;
+    font-size: 15px;
+    box-sizing: border-box;
   }
 
   .list-todo::before {
@@ -125,10 +113,28 @@
     height: 20px;                           /* 高さ指定 */
     display:  inline-block;                 /* インラインブロックにする */
     position:  relative;                    /* アイコンの位置を調整 */
-    top: 0px;                             /* アイコンの位置を調整 */
+    top: 3.5px;                             /* アイコンの位置を調整 */
     margin-right: 5px;                      /* 余白指定 */
     background-image:  url("../img/stop-outline.svg");  /* アイコン指定 */
     background-size:  contain;              /* アイコンの大きさ指定 */
     background-repeat:  no-repeat;          /* アイコンをリピートしないようにする */
     vertical-align: top; 
+  }
+
+  .list-todo {
+    width:65%;
+    display:inline-block;
+  }
+
+
+  .list-limit {
+    width:10%;
+    display:inline-block;
+    padding-left: 5px;
+  }
+
+  .list-channelname {
+    width:20%;
+    display:inline-block;
+    padding-left: 5px;
   }

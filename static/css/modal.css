@@ -87,6 +87,17 @@
   color:var(--kuro);
 }
 
+.mydream-form-input {
+  width: 70%;
+  background-color: transparent;
+  border-bottom: 1px solid lightgrey;
+  box-shadow: 0 10px 15px -12px var(--middle_pink);
+  margin-top: 8px;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  color: var(--kuro);
+}
+
 @media screen and (max-width: 639px) {
   .modal-content {
     margin: 35% auto;
