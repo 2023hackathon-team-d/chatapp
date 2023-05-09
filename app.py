@@ -229,8 +229,8 @@ def delete_task(tid):
         return redirect('/login')
     else: 
         task = dbConnect.getChannelById(tid)
-    if tid:
-        delete_task_list(uid, tid)
+    if task:
+        dbConnect.deleteChannel(uid, tid)
     return redirect('/')
 
 #HTTPレスポンスエラー
