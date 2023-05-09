@@ -195,15 +195,28 @@ def add_task():
         return redirect('/login')
     title = request.form.get('title')
     if title:
-        add_task_list(uid, title)
+        add_task_title = request.form.get('add_task_title')
+        dbConnect.addTask(uid, add_task_title)
     return redirect('/')
 
-@app.route('/delete_task', methods=['POST'])　#taskを削除
-def delete_task():
+@app.route('/update_task', methods=['POST']) #taskを編集
+def update_task():
     uid = session.get('uid')
     if uid is None:
+         return redirect('/login')
+    title = request.form.get('title')
+    if title:
+         update_task_title = request.form.get('update_task_title')
+         dbConnect.updateTask(uid,title)
+    return redirect('/')
+
+@app.route('/delete_task/<tid>', methods=['POST']) #taskを削除
+def delete_task(tid):
+    uid = session.get("uid")
+    if uid is None:
         return redirect('/login')
-    tid = request.form.get('tid')
+    else: 
+        task = dbConnect.getChannelById(tid)
     if tid:
         delete_task_list(uid, tid)
     return redirect('/')
