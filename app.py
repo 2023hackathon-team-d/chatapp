@@ -8,14 +8,12 @@ import re
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'  # セッションで使用する秘密鍵を設定します
+app.permanent_session_lifetime = timedelta(days=30)
 
-@app.route('/')
-def index():
-    if 'user_id' not in session:  # ユーザーが認証されていない場合はログインページにリダイレクトします
-        return redirect('/login')
-    user_id = session['user_id']
-    user = dbConnect.get_user(user_id)  # ログイン中のユーザーを取得します
-    return render_template('index.html', user=user)
+
+@app.route('/signup')
+def signup():
+    return render_template('registration/signup.html')
 
 @app.route('/signup', methods=['POST'])　#ユーザ登録
 def userSignup():
@@ -47,7 +45,7 @@ def userSignup():
             return redirect('/')
     return redirect('/signup')
 
-@app.route('/login', methods=['POST'])
+@app.route('/login', methods=['POST'])　#ログイン
 def userLogin():
     email = request.form.get('email')
     password = request.form.get('password')
@@ -67,10 +65,18 @@ def userLogin():
                 return redirect('/')
     return redirect('/login.html')
 
-@app.route('/logout')
+@app.route('/logout')　#ログアウト
 def logout():
     session.clear()  # セッションからユーザーIDを削除します
     return redirect('/login.html')
+
+@app.route('/')　#チャットリスト
+def index():
+    if 'user_id' not in session:  # ユーザーが認証されていない場合はログインページにリダイレクトします
+        return redirect('/login')
+    user_id = session['user_id']
+    user = dbConnect.get_user(user_id)  # ログイン中のユーザーを取得します
+    return render_template('index.html', user=user)
 
 @app.route('/mypage')　　#マイページ
 def mypage():
@@ -94,7 +100,7 @@ def add_channel():
         error = '既に同じチャンネルが存在しています'
         return render_template('error/error.html', error_message=error)
 
-@app.route('/update_channel', methods=['POST'])　#チャンネル更新
+@app.route('/update_channel', methods=['POST'])　#チャンネル編集
 def update_channel():
     uid = session.get("uid")
     if uid is None:
@@ -173,6 +179,34 @@ def delete_message():
 
     return render_template('detail.html', messages=messages, channel=channel, uid=uid)
 
+@app.route('/')　#TO DO LIST
+def todolist():
+    uid = session.get("uid")
+    if uid is None:
+        return redirect('/login')
+    else:
+        todolist = get_todolist(uid)
+        return render_template('todolist.html', todolist=todolist, uid=uid)
+
+@app.route('/add_task', methods=['POST']) #taskを作成
+def add_task():
+    uid = session.get('uid')
+    if uid is None:
+        return redirect('/login')
+    title = request.form.get('title')
+    if title:
+        add_task_list(uid, title)
+    return redirect('/')
+
+@app.route('/delete_task', methods=['POST'])　#taskを削除
+def delete_task():
+    uid = session.get('uid')
+    if uid is None:
+        return redirect('/login')
+    tid = request.form.get('tid')
+    if tid:
+        delete_task_list(uid, tid)
+    return redirect('/')
 
 #HTTPレスポンスエラー
 @app.errorhandler(404)
