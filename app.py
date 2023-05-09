@@ -15,7 +15,7 @@ app.permanent_session_lifetime = timedelta(days=30)
 def signup():
     return render_template('registration/signup.html')
 
-@app.route('/signup', methods=['POST'])　#ユーザ登録
+@app.route('/signup', methods=['POST'])  # ユーザ登録
 def userSignup():
     name = request.form.get('name')
     email = request.form.get('email')
@@ -45,7 +45,7 @@ def userSignup():
             return redirect('/')
     return redirect('/signup')
 
-@app.route('/login', methods=['POST'])　#ログイン
+@app.route('/login', methods=['POST']) # ログイン
 def userLogin():
     email = request.form.get('email')
     password = request.form.get('password')
@@ -65,12 +65,12 @@ def userLogin():
                 return redirect('/')
     return redirect('/login.html')
 
-@app.route('/logout')　#ログアウト
+@app.route('/logout') #ログアウト
 def logout():
     session.clear()  # セッションからユーザーIDを削除します
     return redirect('/login.html')
 
-@app.route('/')　#チャットリスト
+@app.route('/')　  #チャットリスト
 def index():
     if 'user_id' not in session:  # ユーザーが認証されていない場合はログインページにリダイレクトします
         return redirect('/login')
@@ -78,14 +78,14 @@ def index():
     user = dbConnect.get_user(user_id)  # ログイン中のユーザーを取得します
     return render_template('index.html', user=user)
 
-@app.route('/mypage')　　#マイページ
+@app.route('/mypage')　　 # マイページ
 def mypage():
     uid = session.get("uid")
     if uid is None:
         return redirect('/login')
     return render_template('/mypage.html')
 
-@app.route('/', methods=['POST'])　#チャンネル追加
+@app.route('/', methods=['POST'])　 # チャンネル追加
 def add_channel():
     uid = session.get('uid')
     if uid is None:
@@ -100,7 +100,7 @@ def add_channel():
         error = '既に同じチャンネルが存在しています'
         return render_template('error/error.html', error_message=error)
 
-@app.route('/update_channel', methods=['POST'])　#チャンネル編集
+@app.route('/update_channel', methods=['POST']) 　# チャンネル編集
 def update_channel():
     uid = session.get("uid")
     if uid is None:
@@ -116,7 +116,7 @@ def update_channel():
     return render_template('detail.html', messages=messages, channel=channel, uid=uid)
 
 
-@app.route('/delete/<cid>')　#チャンネル削除
+@app.route('/delete/<cid>')　 # チャンネル削除
 def delete_channel(cid):
     uid = session.get("uid")
     if uid is None:
@@ -133,7 +133,7 @@ def delete_channel(cid):
 
 
 # uidもmessageと一緒に返す
-@app.route('/detail/<cid>')　#チャットの中身
+@app.route('/detail/<cid>')　 # チャットの中身
 def detail(cid):
     uid = session.get("uid")
     if uid is None:
@@ -163,7 +163,7 @@ def add_message():
     return render_template('detail.html', messages=messages, channel=channel, uid=uid)
 
 
-@app.route('/delete_message', methods=['POST'])　#メッセージ削除
+@app.route('/delete_message', methods=['POST']) 　# メッセージ削除
 def delete_message():
     uid = session.get("uid")
     if uid is None:
@@ -179,7 +179,7 @@ def delete_message():
 
     return render_template('detail.html', messages=messages, channel=channel, uid=uid)
 
-@app.route('/')　#TO DO LIST
+@app.route('/')　 # TODOLIST
 def todolist():
     uid = session.get("uid")
     if uid is None:
@@ -188,7 +188,7 @@ def todolist():
         todolist = get_todolist(uid)
         return render_template('todolist.html', todolist=todolist, uid=uid)
 
-@app.route('/add_task', methods=['POST']) #taskを作成
+@app.route('/add_task', methods=['POST'])  # taskを作成
 def add_task():
     uid = session.get('uid')
     if uid is None:
@@ -199,7 +199,7 @@ def add_task():
         dbConnect.addTask(uid, add_task_title)
     return redirect('/')
 
-@app.route('/update_task', methods=['POST']) #taskを編集
+@app.route('/update_task', methods=['POST'])  # taskを編集
 def update_task():
     uid = session.get('uid')
     if uid is None:
@@ -210,7 +210,7 @@ def update_task():
          dbConnect.updateTask(uid,title)
     return redirect('/')
 
-@app.route('/delete_task/<tid>', methods=['POST']) #taskを削除
+@app.route('/delete_task/<tid>', methods=['POST'])  # taskを削除
 def delete_task(tid):
     uid = session.get("uid")
     if uid is None:
