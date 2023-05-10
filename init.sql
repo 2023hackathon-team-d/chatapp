@@ -10,7 +10,7 @@ GRANT ALL PRIVILEGES ON chatapp.* TO 'testuser'@'localhost';　#localhostで入�
 
 --usersテーブル作成
 CREATE TABLE users (
-    uid varchar(50) PRIMARY KEY,
+    id AUTO_INCREMENT PRIMARY KE
     user_name varchar(50) UNIQUE NOT NULL,
     email varchar(50) UNIQUE NOT NULL,
     password varchar(50) NOT NULL
