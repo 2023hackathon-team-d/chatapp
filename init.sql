@@ -23,7 +23,7 @@ CREATE TABLE users (
 CREATE TABLE channels (
     id AUTO_INCREMENT PRIMARY KEY,
     uid varchar(50) REFERENCES users(uid),
-    name varchar(50) UNIQUE NOT NULL,
+    channel_name varchar(50) UNIQUE NOT NULL,
     cate VARCHAR(50) UNIQUE NOT NULL,
     abstaract VARCHAR(50) NOT NULL
 );
