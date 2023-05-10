@@ -10,7 +10,7 @@ GRANT ALL PRIVILEGES ON chatapp.* TO 'testuser'@'localhost';
 
 -- usersテーブル作成
 CREATE TABLE users (
-    id AUTO_INCREMENT PRIMARY KEY
+    id INT AUTO_INCREMENT PRIMARY KEY,
     user_name varchar(50) UNIQUE NOT NULL,
     email varchar(50) UNIQUE NOT NULL,
     password varchar(50) NOT NULL
@@ -21,7 +21,7 @@ CREATE TABLE users (
 
 -- channelsテーブルを作成
 CREATE TABLE channels (
-    id AUTO_INCREMENT PRIMARY KEY,
+    id INT AUTO_INCREMENT PRIMARY KEY,
     uid varchar(50) REFERENCES users(uid),
     channel_name varchar(50) UNIQUE NOT NULL,
     cate VARCHAR(50) UNIQUE NOT NULL,
@@ -30,7 +30,7 @@ CREATE TABLE channels (
 
 -- messageテーブルを作成
 CREATE TABLE messages (
-    id AUTO_INCREMENT PRIMARY KEY,
+    id INT AUTO_INCREMENT PRIMARY KEY,
     uid varchar(50) REFERENCES users(uid),
     cid integer REFERENCES channels(id) ON DELETE CASCADE,
     message text,
@@ -39,7 +39,7 @@ CREATE TABLE messages (
 
 -- tasksテーブルを作成
 CREATE TABLE tasks (
-    id AUTO_INCREMENT PRIMARY KEY,
+    id INT AUTO_INCREMENT PRIMARY KEY,
     task varchar(50),
     limit_date datetime.starptime,
     create_at TIMESTAMP,
