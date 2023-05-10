@@ -14,8 +14,8 @@ CREATE TABLE users (
     user_name varchar(50) UNIQUE NOT NULL,
     email varchar(50) UNIQUE NOT NULL,
     password varchar(50) NOT NULL
-    created_at TIMESTAMP,
-    update_at TIMESTAMP,
+    create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    update_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     CONSTRAINT chk_password_length CHECK (length(password) >= 8)
 );
 
@@ -43,7 +43,7 @@ CREATE TABLE tasks (
     task varchar(50),
     limit_date datetime.starptime,
     create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-update_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+    update_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
 
