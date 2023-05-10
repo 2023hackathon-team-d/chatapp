@@ -188,7 +188,7 @@ def delete_message():
     return render_template('detail.html', messages=messages, channel=channel, uid=uid)
 
 # TODOLIST
-@app.route('/')
+@app.route('/todolist')
 def todolist():
     uid = session.get("uid")
     if uid is None:
