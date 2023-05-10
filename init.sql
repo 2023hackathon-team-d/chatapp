@@ -14,8 +14,7 @@ CREATE TABLE users (
     user_name varchar(50) UNIQUE NOT NULL,
     email varchar(50) UNIQUE NOT NULL,
     password varchar(50) NOT NULL
-    create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    update_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+    create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 -- channelsテーブルを作成
