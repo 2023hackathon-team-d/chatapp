@@ -6,9 +6,9 @@ DROP USER IF EXISTS 'testuser'@'localhost';
 CREATE USER 'testuser'@'localhost' IDENTIFIED BY 'testuser';
 CREATE DATABASE chatapp;
 --chatappデータベースを使用宣言
-USE chatapp　
+USE chatapp
 --localhostで入ってきたユーザはデータベースへのすべてのアクセス権限あり
-GRANT ALL PRIVILEGES ON chatapp.* TO 'testuser'@'localhost';　
+GRANT ALL PRIVILEGES ON chatapp.* TO 'testuser'@'localhost';
 
 -- usersテーブル作成
 CREATE TABLE users (
