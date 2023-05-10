@@ -13,7 +13,7 @@ CREATE TABLE users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_name varchar(50) UNIQUE NOT NULL,
     email varchar(50) UNIQUE NOT NULL,
-    password varchar(50) NOT NULL
+    password varchar(50) NOT NULL,
     create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
