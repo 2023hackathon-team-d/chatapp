@@ -15,8 +15,7 @@ CREATE TABLE users (
     email varchar(50) UNIQUE NOT NULL,
     password varchar(50) NOT NULL
     create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    update_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    CONSTRAINT chk_password_length CHECK (length(password) >= 8)
+    update_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
 -- channelsテーブルを作成
@@ -34,7 +33,7 @@ CREATE TABLE messages (
     uid varchar(50) REFERENCES users(uid),
     cid integer REFERENCES channels(id) ON DELETE CASCADE,
     message text,
-    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 -- tasksテーブルを作成
