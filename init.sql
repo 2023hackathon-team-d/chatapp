@@ -1,6 +1,6 @@
 -- 既存のchatappというデータベースとtestuserというユーザを削除
-DROP DATABASE chatapp;
-DROP USER 'testuser'@'localhost';
+DROP DATABASE IF EXISTS chatapp;
+DROP USER IF EXISTS 'testuser'@'localhost';
 
 -- chatappというデータベースとtestuserというユーザを作成
 CREATE USER 'testuser'@'localhost' IDENTIFIED BY 'testuser';
@@ -10,7 +10,7 @@ GRANT ALL PRIVILEGES ON chatapp.* TO 'testuser'@'localhost';　--localhostで入
 
 -- usersテーブル作成
 CREATE TABLE users (
-    id AUTO_INCREMENT PRIMARY KE
+    id AUTO_INCREMENT PRIMARY KEY
     user_name varchar(50) UNIQUE NOT NULL,
     email varchar(50) UNIQUE NOT NULL,
     password varchar(50) NOT NULL
@@ -25,7 +25,7 @@ CREATE TABLE channels (
     uid varchar(50) REFERENCES users(uid),
     name varchar(50) UNIQUE NOT NULL,
     cate VARCHAR(50) UNIQUE NOT NULL,
-    abstaract VARCHAR(50) NOT NULL,
+    abstaract VARCHAR(50) NOT NULL
 );
 
 -- messageテーブルを作成
@@ -41,7 +41,7 @@ CREATE TABLE messages (
 CREATE TABLE tasks (
     id AUTO_INCREMENT PRIMARY KEY,
     task varchar(50),
-    limit datetime.starptime,
+    limit_date datetime.starptime,
     create_at TIMESTAMP,
     update_at TIMESTAMP
 );
