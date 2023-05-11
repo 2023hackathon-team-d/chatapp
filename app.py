@@ -51,7 +51,8 @@ def userSignup():
 def userLogin():
     email = request.form.get('email')
     password = request.form.get('password')
-
+    DBuser = dbConnect.getUser(email)
+    
     if email =='' or password == '':
         flash('空のフォームがあるようです')
     else:
