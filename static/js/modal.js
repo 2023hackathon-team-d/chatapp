@@ -15,7 +15,6 @@ const deleteChannelConfirmBtn = document.getElementById(
   "delete-channel-confirmation-btn"
 );
 
-
 // モーダルを開く
 // <button id="add-channel-btn">チャンネル追加</button>ボタンがクリックされた時
 addChannelBtn.addEventListener("click", () => {
@@ -57,6 +56,8 @@ function outsideClose(e) {
     addChannelModal.style.display = "none";
   } else if (e.target == deleteChannelModal) {
     deleteChannelModal.style.display = "none";
+  } else if (e.target == updateChannelModal) {
+    updateChannelModal.style.display = "none";
   } 
 }
 

@@ -1,7 +1,7 @@
 const pagination = () => {
   // 初期設定
   let page = 1; // 今何ページ目にいるか
-  const STEP = 5; // ステップ数（1ページに表示する項目数）
+  const STEP = 3; // ステップ数（1ページに表示する項目数）
   // 全ページ数 channelsリストの総数/ステップ数の余りの有無で場合分け
   // 余りがある場合はページを１つ余分に追加する
   const TOTAL =
@@ -35,14 +35,17 @@ const pagination = () => {
       const url = `/detail/${item.id}`;
       a.innerText = item.name;
       a.setAttribute("href", url);
+      a.classList.add("list_a");
       li.appendChild(a);
+
       //// もしチャンネル作成者uidとuidが同じだったら削除ボタンを追加
       if (uid === item.uid) {
         const deleteButton = document.createElement("button");
-        deleteButton.innerText = "DELETE";
-        deleteButton.classList.add("basic-btn");
-        deleteButton.classList.add("smaller-btn");
+        const editButton = document.createElement("button");
+        deleteButton.classList.add("list_delete_btn");
+        editButton.classList.add("list_edit_btn");
         li.appendChild(deleteButton);
+        li.appendChild(editButton);
         deleteButton.addEventListener("click", () => {
           modalOpen("delete");
           const confirmationButtonLink = document.getElementById(
@@ -51,9 +54,22 @@ const pagination = () => {
           const url = `/delete/${item.id}`;
           confirmationButtonLink.setAttribute("href", url);
         });
+        editButton.addEventListener("click", () => {
+          modalOpen("update");
+          const confirmationButtonLink = document.getElementById(
+            "edit-confirm-link"
+          ); // aタグ
+          const url = `/update/${item.id}`;
+          confirmationButtonLink.setAttribute("href", url);
+        });
       }
       /////
       ul.appendChild(li);
+
+      const channel_detail = document.createElement("p");
+      channel_detail.innerText = item.abstract;
+      channel_detail.classList.add("list_channel_detail");
+      li.appendChild(channel_detail);
     });
   };
   // pagination内で現在選択されているページの番号に色を付ける

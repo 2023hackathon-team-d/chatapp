@@ -21,12 +21,14 @@ body {
   align-items: center;
   background-color: var(--kuro);
   margin: 0;
+  flex-wrap: nowrap;
 }
 
 .navigation ul li {
   background-color: #000000;
   list-style :none;
   text-align: center;
+  width:15%;
 }
 
 .list.active{
@@ -42,6 +44,7 @@ body {
   display: flex;
   text-align: center;
   margin: 0 0 0 auto;
+  width:5%;
 }
 
 .navigation ul li a {

@@ -1,6 +1,8 @@
 const updateButton = document.getElementById("channel-update");
 const updateChannelModal = document.getElementById("update-channel-modal");
 const updatePageButtonClose = document.getElementById("update-page-close-btn");
+const updatePageButtonConfirm = document.getElementById("channel-update-edit");
+
 
 const updateChannel = () => {
   if (uid !== channel.uid) {

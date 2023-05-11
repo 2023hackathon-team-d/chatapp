@@ -6,15 +6,13 @@
   <div class="main-container">
     <div class="chat-box">
       <div id="chat-header">
-        <!-- もしuidとチャンネル作成者が同じならタイトル、説明を編集可能にする -->
         <p id="chatroom-name">{{ channel.name }}</p>
         {% if channel.abstract is not none %}
           <p id="chatroom-description">{{ channel.abstract }}</p>
         {% endif %}
-        {% if uid == channel.uid %}
-          <button id='channel-update' class="basic-btn smaller-btn">EDIT</button>
-          {% include 'modal/update-channel.html' %}
-        {% endif %}
+        <p class="everyonetodo">みんなのTODOリスト</p>
+        <ul id="everytodo-contana" class="everytodo-contana"></ul>
+
       </div>
       <div id="message-area">
         {% if messages|length > 0 %}
@@ -60,6 +58,7 @@
   <script type="text/javascript">
     const channel = JSON.parse('{{ channel|tojson }}');
     const uid = JSON.parse('{{ uid|tojson }}');
+    const task = JSON.parse('{{ task|tojson }}');
   </script>
   <script
     src="{{url_for('static',filename='js/scroll-message.js')}}"

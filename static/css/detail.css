@@ -16,7 +16,7 @@
   background-color: var(--lightmouse);
   margin-top: 3.9%;
   height: 100%;
-  width: 15%;
+  width: 19%;
   position: fixed;
   top: 0;
   color: var(--kuro);
@@ -25,16 +25,32 @@
   align-items: center;
   z-index: 40;
   padding-left: 15px;
+  padding-right: 15px;
 }
 
 #chatroom-name {
   font-size: larger;
+  margin-top: 10%;
 }
 
 #chatroom-description {
   font-size: small;
 }
 
+.everyonetodo {
+  font-size: 20px;
+  font-weight: 100;
+  text-align: center;
+}
+
+.everytodo-contana {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  background-color: var(--snow);
+}
 /* メッセージエリア */
 
 #message-area {

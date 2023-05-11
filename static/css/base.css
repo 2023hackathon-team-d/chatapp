@@ -47,6 +47,8 @@ input {
 
 li {
   list-style: none;
+  flex-wrap: wrap;
+  width: 100%;
 }
 
 a {

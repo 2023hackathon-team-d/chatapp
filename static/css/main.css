@@ -1,8 +1,9 @@
 .channelpage {
-  display: flex;
-  flex-direction: column;
+  /* display: flex;
+  flex-direction: column; */
   margin: 0;
   padding: 0;
+  /* flex-wrap: wrap; */
 }
 
 .bg-img {
@@ -24,25 +25,24 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .channel-title {
   display: flex;
-  gap: 35px;
-  flex-direction: column;
   justify-content: center;
-  align-items: center;
 }
 
 .channel-title h1 {
- font-size: 25px;
+ font-size: 30px;
  font-weight: normal;
 }
 
 .channel-title button {
   background-color: var(--snow);
   color: var(--kuro);
-  text-align: center;
+  margin:10px;
+  padding: 0;
 }
 
 .channel-title button:hover {
@@ -53,7 +53,8 @@
   min-height: 80%;
   display: flex;
   flex-direction: column;
-  padding: 1rem;
+  flex-wrap: wrap;
+  width: 100%;
 }
 
 .channel-box li {
@@ -86,6 +87,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  
 }
 
 .pagination-container {
@@ -101,6 +103,42 @@
 .pagination li.colored {
   background-color: var(--kuro);
   color: var(--snow);
+}
+
+
+.list_a {
+  width: 100%;
+  margin: 5px;
+  order: 0;
+}
+
+.list_delete_btn {
+  margin: 5px;
+  order:2;
+  background-image:url('../img/trash-outline.svg');
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+}
+
+.list_edit_btn {
+  margin: 5px;
+  order:3;
+  background-image:url('../img/create-outline.svg');
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+}
+
+
+
+.list_channel_detail {
+ width: 85%;
+ margin: 20px;
+ order:1;
+ font-size: 15px;
 }
 
 #prev,
