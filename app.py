@@ -16,7 +16,7 @@ def signup():
     return render_template('registration/signup.html')
 
 # ユーザ登録
-@app.route('/signup', methods=['POST'])
+@app.route('/signup', methods=['GET'])
 def userSignup():
     name = request.form.get('name')
     email = request.form.get('email')
@@ -47,7 +47,7 @@ def userSignup():
     return redirect('/signup')
 
 # ログイン
-@app.route('/login', methods=['POST'])
+@app.route('/login', methods=['GET'])
 def userLogin():
     email = request.form.get('email')
     password = request.form.get('password')
@@ -91,7 +91,7 @@ def mypage():
     return render_template('/mypage.html')
 
 # チャンネル追加
-@app.route('/', methods=['POST'])
+@app.route('/', methods=['GET'])
 def add_channel():
     uid = session.get('uid')
     if uid is None:
@@ -153,7 +153,7 @@ def detail(cid):
     return render_template('detail.html', messages=messages, channel=channel, uid=uid)
 
 #メッセージ投稿
-@app.route('/message', methods=['POST'])
+@app.route('/message', methods=['GET'])
 def add_message():
     uid = session.get("uid")
     if uid is None:
@@ -171,7 +171,7 @@ def add_message():
     return render_template('detail.html', messages=messages, channel=channel, uid=uid)
 
 # メッセージ削除
-@app.route('/delete_message', methods=['POST'])
+@app.route('/delete_message', methods=['GET'])
 def delete_message():
     uid = session.get("uid")
     if uid is None:
@@ -198,7 +198,7 @@ def todolist():
         return render_template('todolist.html', todolist=todolist, uid=uid)
     
 # taskを作成
-@app.route('/add_task', methods=['POST'])
+@app.route('/add_task', methods=['GET'])
 def add_task():
     uid = session.get('uid')
     if uid is None:
@@ -210,7 +210,7 @@ def add_task():
     return redirect('/')
 
 # taskを編集
-@app.route('/update_task', methods=['POST'])
+@app.route('/update_task', methods=['GET'])
 def update_task():
     uid = session.get('uid')
     if uid is None:
@@ -222,7 +222,7 @@ def update_task():
     return redirect('/')
 
 # taskを削除
-@app.route('/delete_task/<tid>', methods=['POST'])
+@app.route('/delete_task/<tid>', methods=['GET'])
 def delete_task(tid):
     uid = session.get("uid")
     if uid is None:
