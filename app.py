@@ -55,7 +55,7 @@ def userLogin():
     if email =='' or password == '':
         flash('空のフォームがあるようです')
     else:
-        DBuser = dbConnect.getUser(email)
+        DBuser = dbConnect.get_user(email)
         if DBuser is None:
             flash('このユーザーは存在しません')
         else:
