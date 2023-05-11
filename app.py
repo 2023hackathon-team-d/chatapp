@@ -55,15 +55,15 @@ def userLogin():
     if email =='' or password == '':
         flash('空のフォームがあるようです')
     else:
-        user = dbConnect.getUser(email)
-        if user is None:
+        DBuser = dbConnect.getUser(email)
+        if DBuser is None:
             flash('このユーザーは存在しません')
         else:
             hashPassword = hashlib.sha256(password.encode('utf-8')).hexdigest()
-            if hashPassword != user["password"]:
+            if hashPassword != DBuser["password"]:
                 flash('パスワードが間違っています！')
             else:
-                session['uid'] = user["uid"]
+                session['uid'] = DBuser["uid"]
                 return redirect('/')
     return redirect('/login.html')
 
