@@ -1,21 +1,21 @@
 from flask import Flask, request, redirect, render_template, session, flash
 from models import dbConnect
-from util.user import User
+from user import User
 from datetime import timedelta
 import hashlib
 import uuid
 import re
 
-app = Flask(__name__)
-app.secret_key = 'your_secret_key'  # セッションで使用する秘密鍵を設定します
 
-@app.route('/')
-def index():
-    if 'user_id' not in session:  # ユーザーが認証されていない場合はログインページにリダイレクトします
-        return redirect('/login')
-    user_id = session['user_id']
-    user = dbConnect.get_user(user_id)  # ログイン中のユーザーを取得します
-    return render_template('index.html', user=user)
+app = Flask(__name__)
+app.secret_key = uuid.uuid4().hex
+app.permanent_session_lifetime = timedelta(days=30)
+
+
+@app.route('/signup')
+def signup():
+    return render_template('registration/signup.html')
+
 
 @app.route('/signup', methods=['POST'])
 def userSignup():
@@ -47,6 +47,12 @@ def userSignup():
             return redirect('/')
     return redirect('/signup')
 
+
+@app.route('/login')
+def login():
+    return render_template('registration/login.html')
+
+
 @app.route('/login', methods=['POST'])
 def userLogin():
     email = request.form.get('email')
@@ -67,11 +73,43 @@ def userLogin():
                 return redirect('/')
     return redirect('/login')
 
+
 @app.route('/logout')
 def logout():
-    session.pop('user_id', None)  # セッションからユーザーIDを削除します
+    session.clear()
     return redirect('/login')
 
+#todoリスト
+@app.route('/todolist')
+def todolist():
+    uid = session.get("uid")
+    channels = dbConnect.getChannelAll()
+    return render_template('todolist.html', channels=channels, uid=uid)
+
+@app.route('/')
+def index():
+    uid = session.get("uid")
+    if uid is None:
+        return redirect('/login')
+    else:
+        channels = dbConnect.getChannelAll()
+    return render_template('index.html', channels=channels, uid=uid)
+
+
+@app.route('/', methods=['POST'])
+def add_channel():
+    uid = session.get('uid')
+    if uid is None:
+        return redirect('/login')
+    channel_name = request.form.get('channel-title')
+    channel = dbConnect.getChannelByName(channel_name)
+    if channel == None:
+        channel_description = request.form.get('channel-description')
+        dbConnect.addChannel(uid, channel_name, channel_description)
+        return redirect('/')
+    else:
+        error = '既に同じチャンネルが存在しています'
+        return render_template('error/error.html', error_message=error)
 
 
 @app.route('/update_channel', methods=['POST'])
@@ -154,6 +192,22 @@ def delete_message():
     return render_template('detail.html', messages=messages, channel=channel, uid=uid)
 
 
+
+
+
+#完了済みタスク一覧へ移動
+@app.route('/todolistfinish')
+def todolistfinish():
+    return render_template('todolistfinish.html')
+
+#@app.route('/mypage')
+#def mypage():
+
+#channels = dbConnect.getChannelAll()
+# users = dbConnect.getUsersAll()
+#    return render_template('mypage.html')
+
+
 @app.errorhandler(404)
 def show_error404(error):
     return render_template('error/404.html')
@@ -164,8 +218,7 @@ def show_error500(error):
     return render_template('error/500.html')
 
 
+
 if __name__ == '__main__':
     app.run(debug=True)
-
-
 
