@@ -28,7 +28,7 @@ class dbConnect:
             user = cur.fetchone()
             return user
         except Exception as e:
-            print('例外' + e + 'が発生しています')
+            print('例外' + str(e) + 'が発生しています')
             return None
         finally:
             cur.close
@@ -87,7 +87,7 @@ class dbConnect:
             cur.execute(sql, (uid, newChannelName))
             conn.commit()
         except Exception as e:
-            print('例外' + e + 'が発生しています')
+            print('例外' + str(e) + 'が発生しています')
             return None
         finally:
             cur.close()
@@ -101,7 +101,7 @@ class dbConnect:
             cur.execute(sql, (channel_name))
             channel = cur.fetchone()
         except Exception as e:
-            print('例外' + e + 'が発生しました')
+            print('例外' + str(e) + 'が発生しました')
             return None
         finally:
             cur.close()
@@ -116,7 +116,7 @@ class dbConnect:
             cur.execute(sql, (uid, newChannelName, cid))
             conn.commit()
         except Exception as e:
-            print('例外が' + e + '発生しています')
+            print('例外が' + str(e) + '発生しています')
             return None
         finally:    
             cur.close()
@@ -130,7 +130,7 @@ class dbConnect:
             cur.execute(sql, (cid))
             conn.commit()
         except Exception as e:
-            print('例外'+ e +'が発生しています')
+            print('例外'+ str(e) +'が発生しています')
             return None
         finally:
             cur.close()
@@ -145,7 +145,7 @@ class dbConnect:
             messages = cur.fetchall()
             return messages
         except Exception as e:
-            print('例外'+ e +'が発生しています')
+            print('例外'+ str(e) +'が発生しています')
             return None
         finally:
             cur.close()
@@ -159,7 +159,7 @@ class dbConnect:
             cur.execute(sql, (uid, cid, message))
             conn.commit()
         except Exception as e:
-            print('例外' + e +'が発生しています')
+            print('例外' + str(e) +'が発生しています')
             return None
         finally:
             cur.close()
@@ -173,7 +173,7 @@ class dbConnect:
             cur.execute(sql, (message_id))
             conn.commit()
         except Exception as e:
-            print('例外'+ e +'が発生しています')
+            print('例外'+ str(e) +'が発生しています')
             return None
         finally:
             cur.close()
