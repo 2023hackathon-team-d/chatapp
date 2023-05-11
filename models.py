@@ -31,7 +31,7 @@ class dbConnect:
             print('例外' + str(e) + 'が発生しています')
             return None
         finally:
-            cur.close
+            cur.close()
 
     # チャンネル情報を得る関数
     def getChannelAll():
