@@ -83,7 +83,7 @@ def mypage():
     return render_template('registration/mypage.html')
            
 #チャットリスト
-@app.route('/')
+@app.route('/index')
 def index():
     uid = session.get("uid") # ユーザーが認証されていない場合はログインページにリダイレクトします
     if uid is None:
