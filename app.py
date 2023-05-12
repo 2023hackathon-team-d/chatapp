@@ -77,6 +77,11 @@ def logout():
     session.clear()  # セッションからユーザーIDを削除します
     return redirect('/login.html')
 
+# マイページ
+@app.route('/mypage')
+def mypage():
+    return render_template('registration/mypage.html')
+           
 #チャットリスト
 @app.route('/')
 def index():
@@ -85,11 +90,6 @@ def index():
     user_id = session['user_id']
     user = dbConnect.get_user(user_id)  # ログイン中のユーザーを取得します
     return render_template('index.html', user=user)
-
-# マイページ
-@app.route('/mypage')
-def mypage():
-    return render_template('registration/mypage.html')
 
 # チャンネル追加
 @app.route('/', methods=['GET','POST'])
