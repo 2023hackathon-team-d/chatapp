@@ -91,13 +91,6 @@ def index():
 def mypage():
     return render_template('registration/mypage.html')
 
-@app.route('/mypage')
-def mypage():
-    uid = session.get("uid")
-    if uid is None:
-        return redirect('/login')
-    return render_template('/mypage.html')
-
 # チャンネル追加
 @app.route('/', methods=['GET','POST'])
 def add_channel():
