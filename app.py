@@ -86,7 +86,7 @@ def index():
         return redirect('/login')
     else:
         user = dbConnect.getUser(uid)  # ログイン中のユーザーを取得します
-    return render_template('index.html', user=user)
+        return render_template('index.html', user=user)
 
 # チャンネル追加
 @app.route('/', methods=['GET','POST'])
