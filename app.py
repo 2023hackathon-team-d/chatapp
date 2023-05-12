@@ -77,6 +77,10 @@ def logout():
     session.clear()  # セッションからユーザーIDを削除します
     return redirect('/login.html')
 
+#マイページ
+@app.route('/mypage')
+def mypage():
+    return render_template('mypage.html')
            
 #チャットリスト
 @app.route('/', methods=['GET','POST'])
