@@ -85,10 +85,11 @@ def mypage():
 #チャットリスト
 @app.route('/')
 def index():
-    if 'user_id' not in session:  # ユーザーが認証されていない場合はログインページにリダイレクトします
+    uid = session.get("uid") # ユーザーが認証されていない場合はログインページにリダイレクトします
+    if uid is None:
         return redirect('/login')
-    user_id = session['user_id']
-    user = dbConnect.get_user(user_id)  # ログイン中のユーザーを取得します
+    else:
+        user = dbConnect.get_user(uid)  # ログイン中のユーザーを取得します
     return render_template('index.html', user=user)
 
 # チャンネル追加
