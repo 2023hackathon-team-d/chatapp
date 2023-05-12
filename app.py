@@ -85,6 +85,8 @@ def mypage():
     if uid is None:
         return redirect('/login')
     return render_template('mypage.html', uid=uid)
+
+@app.route('/
            
 #チャットリスト
 @app.route('/', methods=['GET','POST'])
