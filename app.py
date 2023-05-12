@@ -80,7 +80,10 @@ def logout():
 #マイページ
 @app.route('/mypage')
 def mypage():
-    return render_template('mypage.html')
+    uid = session.get('uid')
+    if uid is None:
+        return redirect('/login')
+    return render_template('mypage.html', uid=uid)
            
 #チャットリスト
 @app.route('/', methods=['GET','POST'])
