@@ -55,12 +55,12 @@ def userLogin():
     if email =='' or password == '':
         flash('空のフォームがあるようです')
     else:
-        user = dbConnect.getUser(email)
-        if DBuser is None:
+        user = Connect.getUser(email)
+        if user is None:
             flash('このユーザーは存在しません')
         else:
             hashPassword = hashlib.sha256(password.encode('utf-8')).hexdigest()
-            if hashPassword != DBuser["password"]:
+            if hashPassword != user["password"]:
                 flash('パスワードが間違っています！')
             else:
                 session['uid'] = DBuser["uid"]
