@@ -81,6 +81,7 @@ def logout():
 @app.route('/mypage')
 def mypage():
     uid = session.get('uid')
+    channel = dbConnect.getChannelAll() 
     if uid is None:
         return redirect('/login')
     return render_template('mypage.html', uid=uid)
@@ -199,12 +200,11 @@ def todolist():
     if uid is None:
         return redirect('/login')
     else:
-        todolist = get_todolist(uid)
-        return render_template('todolist.html', todolist=todolist, uid=uid)
+        return render_template('todolist.html', uid=uid)
     
 # taskを作成
-@app.route('/add_task', methods=['GET','POST'])
-def add_task():
+@app.route('/add-task', methods=['GET','POST'])
+def add-task():
     uid = session.get('uid')
     if uid is None:
         return redirect('/login')
@@ -215,8 +215,8 @@ def add_task():
     return redirect('/')
 
 # taskを編集
-@app.route('/update_task', methods=['GET','POST'])
-def update_task():
+@app.route('/update-task', methods=['GET','POST'])
+def update-task():
     uid = session.get('uid')
     if uid is None:
          return redirect('/login')
@@ -227,15 +227,15 @@ def update_task():
     return redirect('/')
 
 # taskを削除
-@app.route('/delete_task/<tid>', methods=['GET','POST'])
-def delete_task(tid):
+@app.route('/delete-task/<tid>', methods=['GET','POST'])
+def delete-ask(tid):
     uid = session.get("uid")
     if uid is None:
         return redirect('/login')
     else: 
         task = dbConnect.getChannelById(tid)
     if task:
-        dbConnect.deleteChannel(uid, tid)
+        dbConnect.deleteTask(uid, tid)
     return redirect('/')
 
 #HTTPレスポンスエラー
