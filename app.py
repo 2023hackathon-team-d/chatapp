@@ -188,6 +188,10 @@ def delete_message():
 # TODOLIST
 @app.route('/todolist')
 def todolist():
+    return render_template('todolist.html')
+
+@app.route('/todolist', methods=['GET', 'POST'])
+def todolist():
     uid = session.get("uid")
     if uid is None:
         return redirect('/login')
