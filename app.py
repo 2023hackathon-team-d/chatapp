@@ -69,7 +69,7 @@ def userLogin():
             else:
                 session['uid'] = user["uid"]
                 return redirect('/mypage')
-    return render_template('mypage.html', user=user)
+                return render_template('mypage.html', user=user)
 
 #ログアウト
 @app.route('/logout')
