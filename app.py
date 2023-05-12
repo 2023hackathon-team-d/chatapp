@@ -46,6 +46,10 @@ def userSignup():
             return redirect('/')
     return redirect('/signup')
 
+@app.route('/login')
+def login():
+    return render_template('registration/login.html')
+
 # ログイン
 @app.route('/login', methods=['GET','POST'])
 def userLogin():
