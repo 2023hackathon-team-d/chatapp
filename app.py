@@ -89,8 +89,8 @@ def index():
     if uid is None: # ユーザーが認証されていない場合はログインページにリダイレクトします
         return redirect('/login')
     else:
-        channels = dbConnect.getChannelAll() 
-        return render_template('index.html', channels=channels,uid=uid)
+        channel = dbConnect.getChannelAll() 
+        return render_template('index.html', channel=channel,uid=uid)
 
 # チャンネル追加
 @app.route('/', methods=['GET','POST'])
