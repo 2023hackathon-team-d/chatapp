@@ -69,7 +69,7 @@ def userLogin():
             else:
                 session['uid'] = user["uid"]
                 return redirect('/mypage')
-    return redirect('/login.html')
+    return render_template('mypage.html', user=user)
 
 #ログアウト
 @app.route('/logout')
@@ -77,10 +77,6 @@ def logout():
     session.clear()  # セッションからユーザーIDを削除します
     return redirect('/login.html')
 
-# マイページ
-@app.route('/')
-def mypage():
-    return render_template('registration/mypage.html')
            
 #チャットリスト
 @app.route('/')
