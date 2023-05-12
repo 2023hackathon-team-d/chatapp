@@ -204,7 +204,7 @@ def todolist():
     
 # taskを作成
 @app.route('/add-task', methods=['GET','POST'])
-def add-task():
+def add_task():
     uid = session.get('uid')
     if uid is None:
         return redirect('/login')
@@ -216,7 +216,7 @@ def add-task():
 
 # taskを編集
 @app.route('/update-task', methods=['GET','POST'])
-def update-task():
+def update_task():
     uid = session.get('uid')
     if uid is None:
          return redirect('/login')
@@ -228,7 +228,7 @@ def update-task():
 
 # taskを削除
 @app.route('/delete-task/<tid>', methods=['GET','POST'])
-def delete-ask(tid):
+def delete_ask(tid):
     uid = session.get("uid")
     if uid is None:
         return redirect('/login')
