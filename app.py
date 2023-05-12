@@ -89,7 +89,7 @@ def index():
     if uid is None:
         return redirect('/login')
     else:
-        user = dbConnect.get_user(uid)  # ログイン中のユーザーを取得します
+        user = dbConnect.getUser(uid)  # ログイン中のユーザーを取得します
     return render_template('index.html', user=user)
 
 # チャンネル追加
