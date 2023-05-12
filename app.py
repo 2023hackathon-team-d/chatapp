@@ -78,12 +78,12 @@ def logout():
     return redirect('/login.html')
 
 # マイページ
-@app.route('/mypage')
+@app.route('/')
 def mypage():
     return render_template('registration/mypage.html')
            
 #チャットリスト
-@app.route('/index')
+@app.route('/')
 def index():
     uid = session.get("uid") # ユーザーが認証されていない場合はログインページにリダイレクトします
     if uid is None:
