@@ -79,7 +79,7 @@ def logout():
 
            
 #チャットリスト
-@app.route('/')
+@app.route('/', methods=['GET','POST'])
 def index():
     uid = session.get("uid") # ユーザーが認証されていない場合はログインページにリダイレクトします
     if uid is None:
