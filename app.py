@@ -68,7 +68,7 @@ def userLogin():
                 flash('パスワードが間違っています！')
             else:
                 session['uid'] = user["uid"]
-                return redirect('/')
+                return redirect('/mypage')
     return redirect('/login.html')
 
 #ログアウト
