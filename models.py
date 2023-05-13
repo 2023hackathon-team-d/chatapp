@@ -1,5 +1,5 @@
 import pymysql
-from util.DB import DB
+from DB import DB
 
 # データベースと接続し、ユーザの登録やユーザー情報を取得するクラス
 class dbConnect:
