@@ -157,8 +157,8 @@ def detail(cid):
     cid = cid
     channel = dbConnect.getChannelById(cid)
     messages = dbConnect.getMessageAll(cid)
-
-    return render_template('detail.html', messages=messages, channel=channel, uid=uid)
+    task = dbConnect.get
+    return render_template('detail.html', messages=messages, channel=channel, uid=uid task=task)
 
 #メッセージ投稿
 @app.route('/message', methods=['GET','POST'])
