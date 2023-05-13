@@ -51,7 +51,7 @@ def login():
     return render_template('registration/login.html')
 
 # ログイン
-@app.route('/login', methods=['GET','POST'])
+@app.route('/login', methods=['POST'])
 def userLogin():
     email = request.form.get('email')
     password = request.form.get('password')
@@ -69,34 +69,34 @@ def userLogin():
             else:
                 session['uid'] = user["uid"]
                 return redirect('/mypage')
-                return render_template('mypage.html', user=user)
+    return redirect('/login')
 
 #ログアウト
 @app.route('/logout')
 def logout():
     session.clear()  # セッションからユーザーIDを削除します
-    return redirect('/login.html')
+    return redirect('/login')
 
 #マイページ
 @app.route('/mypage')
 def mypage():
     uid = session.get('uid')
-    channel = dbConnect.getChannelAll() 
+    channels = dbConnect.getChannelAll()
     if uid is None:
         return redirect('/login')
-    return render_template('mypage.html', uid=uid)
-
-@app.route('/
+    return render_template('mypage.html', uid=uid, channels = channels )
            
 #チャットリスト
-@app.route('/', methods=['GET','POST'])
+@app.route('/')
 def index():
-    uid = session.get('uid') # ログイン中のユーザーを取得します
-    if uid is None: # ユーザーが認証されていない場合はログインページにリダイレクトします
-        return redirect('/login')
+    uid = session.get("uid")
+    if uid is None:
+         return redirect('/login')
     else:
-        channel = dbConnect.getChannelAll() 
-        return render_template('index.html', channel=channel,uid=uid)
+         channels = dbConnect.getChannelAll()
+         cid = request.form.get('cid')
+         channel = dbConnect.getChannelById(cid)
+         return render_template('index.html', channels=channels, uid=uid, channel=channel)
 
 # チャンネル追加
 @app.route('/', methods=['GET','POST'])
@@ -125,7 +125,7 @@ def update_channel():
     channel_name = request.form.get('channel-title')
     channel_description = request.form.get('channel-description')
 
-    dbConnect.updateChannel(uid, channel_name, channel_description, cid)
+    dbConnect.updateChannel(channel_name, channel_description, cid)
     channel = dbConnect.getChannelById(cid)
     messages = dbConnect.getMessageAll(cid)
     return render_template('detail.html', messages=messages, channel=channel, uid=uid)
@@ -157,8 +157,8 @@ def detail(cid):
     cid = cid
     channel = dbConnect.getChannelById(cid)
     messages = dbConnect.getMessageAll(cid)
-
-    return render_template('detail.html', messages=messages, channel=channel, uid=uid)
+    task = dbConnect.get
+    return render_template('detail.html', messages=messages, channel=channel, uid=uid task=task)
 
 #メッセージ投稿
 @app.route('/message', methods=['GET','POST'])
