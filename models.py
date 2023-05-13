@@ -177,3 +177,92 @@ class dbConnect:
             return None
         finally:
             cur.close()
+
+    def gettaskAll():
+        try:
+            conn = DB.getConnection() 
+            cur = conn.cursor() 
+            sql = "SELECT * FROM tasks;"
+            cur.execute(sql) 
+            tasks = cur.fetchall()
+            return tasks
+        except Exception as e:
+            print(e + 'が発生しています')
+            return None
+        finally:
+            cur.close()
+    def gettaskById(tid):
+        try:
+            conn = DB.getConnection() 
+            cur = conn.cursor() 
+            sql = "SELECT * FROM channels WHERE id=%s;"
+            cur.execute(sql, (tid)) 
+            tsdk = cur.fetchone() 
+            return task
+        except Exception as e:
+            print(e + 'が発生しています')
+            return None
+        finally:
+            cur.close()
+def gettaskById(cid):
+        try:
+            conn = DB.getConnection() 
+            cur = conn.cursor() 
+            sql = "SELECT * FROM tasks WHERE id=%s;"
+            cur.execute(sql, (cid)) 
+            channel = cur.fetchone() 
+            return task
+        except Exception as e:
+            print(e + 'が発生しています')
+            return None
+        finally:
+            cur.close()
+
+def task(uid, newtaskName, newtaskDescription):
+        try:
+            conn = DB.getConnection() 
+            cur = conn.cursor() 
+            sql = "INSERT INTO tasks (uid, name, abstract) VALUES (%s, %s, %s);"
+            cur.execute(sql, (uid, newtaskName, newtaskDescription)) 
+            conn.commit() 
+        except Exception as e:
+            print(e + 'が発生しています')
+            return None
+        finally:
+            cur.close()
+
+
+def gettaskByName(task_name): 
+        try:
+            conn = DB.getConnection()  
+            cur = conn.cursor() 
+            sql = "SELECT * FROM tasks WHERE name=%s;"
+            cur.execute(sql, (task_name)) 
+            task = cur.fetchone() 
+        except Exception as e:
+            print(e + 'が発生しました')
+            return None
+        finally:
+            cur.close()
+
+
+def updatetask(uid, newtaskName, newtaskDescription, cid): 
+        conn = DB.getConnection() 
+        cur = conn.cursor() 
+        sql = "UPDATE task SET uid=%s, name=%s, abstract=%s WHERE id=%s;"
+        cur.execute(sql, (uid, newtaskName, newtaskDescription, cid)) 
+        conn.commit() 
+        cur.close()
+
+def deletetask(tid):
+        try: 
+            conn = DB.getConnection() 
+            cur = conn.cursor() 
+            sql = "DELETE FROM task WHERE id=%s;"
+            cur.execute(sql, (tid)) 
+            conn.commit() 
+        except Exception as e:
+            print(e + 'が発生しています')
+            return None
+        finally:
+            cur.close()
