@@ -178,7 +178,7 @@ class dbConnect:
         finally:
             cur.close()
 
-                        def gettaskAll():
+    def gettaskAll():
         try:
             conn = DB.getConnection() 
             cur = conn.cursor() 
@@ -197,6 +197,19 @@ class dbConnect:
             cur = conn.cursor() 
             sql = "SELECT * FROM channels WHERE id=%s;"
             cur.execute(sql, (tid)) 
+            tsdk = cur.fetchone() 
+            return task
+        except Exception as e:
+            print(e + 'が発生しています')
+            return None
+        finally:
+            cur.close()
+def gettaskById(cid):
+        try:
+            conn = DB.getConnection() 
+            cur = conn.cursor() 
+            sql = "SELECT * FROM tasks WHERE id=%s;"
+            cur.execute(sql, (cid)) 
             channel = cur.fetchone() 
             return task
         except Exception as e:
@@ -205,23 +218,7 @@ class dbConnect:
         finally:
             cur.close()
 
-
-    def gettaskByName(task_name):
-        try:
-            conn = DB.getConnection() 
-            cur = conn.cursor() 
-            sql = "SELECT * FROM task WHERE name=%s;"
-            cur.execute(sql, (task_name)) 
-            task = cur.fetchone() 
-            return task
-        except Exception as e:
-            print(e + 'が発生しています')
-            return None
-        finally:
-            cur.close()
-
-
-    def task(uid, newtaskName, newtaskDescription):
+def task(uid, newtaskName, newtaskDescription):
         try:
             conn = DB.getConnection() 
             cur = conn.cursor() 
@@ -235,7 +232,7 @@ class dbConnect:
             cur.close()
 
 
-    def gettaskByName(task_name): 
+def gettaskByName(task_name): 
         try:
             conn = DB.getConnection()  
             cur = conn.cursor() 
@@ -249,7 +246,7 @@ class dbConnect:
             cur.close()
 
 
-    def updatetask(uid, newtaskName, newtaskDescription, tid): 
+def updatetask(uid, newtaskName, newtaskDescription, cid): 
         conn = DB.getConnection() 
         cur = conn.cursor() 
         sql = "UPDATE task SET uid=%s, name=%s, abstract=%s WHERE id=%s;"
@@ -257,12 +254,12 @@ class dbConnect:
         conn.commit() 
         cur.close()
 
-    def deletetask(tid):
+def deletetask(tid):
         try: 
             conn = DB.getConnection() 
             cur = conn.cursor() 
             sql = "DELETE FROM task WHERE id=%s;"
-            cur.execute(sql, (cid)) 
+            cur.execute(sql, (tid)) 
             conn.commit() 
         except Exception as e:
             print(e + 'が発生しています')
