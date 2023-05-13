@@ -86,6 +86,55 @@ def todolist():
     channels = dbConnect.getChannelAll()
     return render_template('todolist.html', channels=channels, uid=uid)
 
+# TODOLIST
+#@app.route('/todolist')
+#def todolist():
+#    uid = session.get("uid")
+#    if uid is None:
+#        return redirect('/login')
+#   else:
+#        todolist = get_todolist(uid)
+#        return render_template('todolist.html', todolist=todolist, uid=uid)
+    
+# taskを作成
+@app.route('/add_task', methods=['GET','POST'])
+def add_task():
+    uid = session.get('uid')
+    if uid is None:
+        return redirect('/login')
+    title = request.form.get('title')
+    if title:
+        add_task_title = request.form.get('add_task_title')
+        dbConnect.addTask(uid, add_task_title)
+    return redirect('/')
+
+# taskを編集
+@app.route('/update_task', methods=['GET','POST'])
+def update_task():
+    uid = session.get('uid')
+    if uid is None:
+         return redirect('/login')
+    title = request.form.get('title')
+    if title:
+         update_task_title = request.form.get('update_task_title')
+         dbConnect.updateTask(uid,title)
+    return redirect('/')
+
+# taskを削除
+@app.route('/delete_task/<tid>', methods=['GET','POST'])
+def delete_task(tid):
+    uid = session.get("uid")
+    if uid is None:
+        return redirect('/login')
+    else: 
+        task = dbConnect.getChannelById(tid)
+    if task:
+        dbConnect.deleteChannel(uid, tid)
+    return redirect('/')
+
+
+
+
 @app.route('/')
 def index():
     uid = session.get("uid")

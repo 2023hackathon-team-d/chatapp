@@ -172,18 +172,11 @@
 }
 
 /*todplist*/
-.todolpage {
+.todopage {
   display: flex;
   flex-direction: column;
   margin: 0;
   padding: 0;
-}
-
-/*右寄せできない*/
-#todofin{
-  color:black;
-  text-decoration: underline;
-  font-size: 18px;
 }
 
 .todo-img {
@@ -197,6 +190,42 @@
   z-index: 1;
   opacity: 0.2;
 }
+
+.todo-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.todo-title h1 {
+ font-size: 25px;
+ font-weight: normal;
+ text-align: right;
+ width:500px;
+ height:30px;
+}
+
+.todo-title button {
+  background-color: var(--snow);
+  text-align: center;
+}
+
+.todo-title ion-icon {
+  color: var(--kuro);
+}
+
+.todo-title button:hover {
+  background-color: var(--snow);
+}
+
+.todo-title a{
+  color:black;
+  text-decoration: underline;
+  font-size: 16px;
+  font-weight: normal;
+  text-align: right;
+ }
 
 .todo-box {
   min-height: 80%;

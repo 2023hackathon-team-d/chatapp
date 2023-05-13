@@ -59,7 +59,15 @@
   font-size: 2rem;
 }
 
+.todomodalClose {
+  font-size: 2rem;
+}
+
 .modalClose:hover {
+  cursor: pointer;
+}
+
+.todomodalClose:hover {
   cursor: pointer;
 }
 
@@ -113,4 +121,8 @@
   .modal {
     padding-left: 80px;
   }
+}
+
+label{
+  color: black;
 }

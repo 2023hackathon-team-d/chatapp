@@ -3,16 +3,17 @@
   <title>todolist</title>
 {% endblock %}
 {% block body %}
-  <div class="main-container channelpage">
+  <div class="main-container todopage">
     <div class="todo-img"></div>
     <div class="main-content">
-      <div class="channel-title">
+      <div class="todo-title">
       <h1>未完了のTODOリスト</h1>
       <button id="add-todo-btn"><ion-icon name="add-circle-outline"></ion-icon></button>
       {% include 'modal/add-task.html' %}
     {% include 'modal/delete-task.html' %}
+    <a href="{{ url_for('todolistfinish') }}">完了済みタスク一覧</a>
     </div>
-    <a id="todofin" href="{{ url_for('todolistfinish') }}">完了済みタスク一覧</a>
+   
       <div class="wrap">
         <div class="box1">タスク</div><div class="box2">期限</div><div class="box3">登録者</div></div>
     </div>
@@ -36,7 +37,7 @@
   type="text/javascript"
   ></script>
   <script
-  src="{{url_for('static',filename='js/modal.js')}}"
+  src="{{url_for('static',filename='js/todomodal.js')}}"
   type="text/javascript"
   ></script>
 {% endblock %}

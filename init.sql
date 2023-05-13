@@ -29,6 +29,14 @@ CREATE TABLE messages (
     created_at timestamp not null default current_timestamp
 );
 
+-- tasksテーブルを作成
+CREATE TABLE tasks (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    task varchar(50),
+    limit_date datetime,
+    create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    update_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
 
 
 
