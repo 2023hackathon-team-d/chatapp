@@ -124,11 +124,12 @@ def update_channel():
     cid = request.form.get('cid')
     channel_name = request.form.get('channel-title')
     channel_description = request.form.get('channel-description')
+    channels = dbConnect.getChannelAll()
 
-    dbConnect.updateChannel(channel_name, channel_description, cid)
+    dbConnect.updateChannel(uid, channel_name, channel_description, cid)
     channel = dbConnect.getChannelById(cid)
-    messages = dbConnect.getMessageAll(cid)
-    return render_template('detail.html', messages=messages, channel=channel, uid=uid)
+     
+    return render_template('index.html',channels=channels, uid=uid, channel=channel)
 
 
 # チャンネル削除
@@ -145,7 +146,7 @@ def delete_channel(cid):
         else:
             dbConnect.deleteChannel(cid)
             channels = dbConnect.getChannelAll()
-            return render_template('index.html', channels=channels, uid=uid)
+            return render_template('index.html', channels=channels, uid=uid, channel=channel)
 
 # チャットの中身
 # uidもmessageと一緒に返す
@@ -157,8 +158,9 @@ def detail(cid):
     cid = cid
     channel = dbConnect.getChannelById(cid)
     messages = dbConnect.getMessageAll(cid)
-    task = dbConnect.get
-    return render_template('detail.html', messages=messages, channel=channel, uid=uid task=task)
+    task = dbConnect.gettaskByCId(cid)
+
+    return render_template('detail.html', messages=messages, channel=channel, uid=uid, task=task)
 
 #メッセージ投稿
 @app.route('/message', methods=['GET','POST'])
@@ -175,8 +177,9 @@ def add_message():
 
     channel = dbConnect.getChannelById(channel_id)
     messages = dbConnect.getMessageAll(channel_id)
+    task = dbConnect.gettaskByCId(channel_id)
 
-    return render_template('detail.html', messages=messages, channel=channel, uid=uid)
+    return render_template('detail.html', messages=messages, channel=channel, uid=uid,task=task)
 
 # メッセージ削除
 @app.route('/delete_message', methods=['GET','POST'])
@@ -192,8 +195,9 @@ def delete_message():
 
     channel = dbConnect.getChannelById(cid)
     messages = dbConnect.getMessageAll(cid)
+    task = dbConnect.gettaskByCId(cid)
 
-    return render_template('detail.html', messages=messages, channel=channel, uid=uid)
+    return render_template('detail.html', messages=messages, channel=channel, uid=uid,task=task)
 
 # TODOLIST
 @app.route('/todolist', methods=['GET', 'POST'])

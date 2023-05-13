@@ -10,7 +10,7 @@ GRANT ALL PRIVILEGES ON chatapp.* TO 'testuser'@'localhost';
 
 -- usersテーブル作成
 CREATE TABLE users (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    uid varchar(50) AUTO_INCREMENT PRIMARY KEY,
     user_name varchar(50) UNIQUE NOT NULL,
     email varchar(50) UNIQUE NOT NULL,
     password varchar(50) NOT NULL,
@@ -23,7 +23,7 @@ CREATE TABLE channels (
     uid varchar(50) REFERENCES users(uid),
     channel_name varchar(50) UNIQUE NOT NULL,
     cate VARCHAR(50) UNIQUE NOT NULL,
-    abstaract VARCHAR(50) NOT NULL
+    abstract VARCHAR(50) NOT NULL
 );
 
 -- messageテーブルを作成
