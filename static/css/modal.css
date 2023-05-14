@@ -53,6 +53,10 @@
   cursor: pointer;
 }
 
+.todomodalClose:hover {
+  cursor: pointer;
+}
+
 .modal-body {
   padding: 10px 20px;
   display: flex;
@@ -114,4 +118,9 @@
   .modal {
     padding-left: 80px;
   }
+}
+
+
+label{
+  color: black;
 }
