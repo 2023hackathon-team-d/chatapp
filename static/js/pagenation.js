@@ -56,11 +56,11 @@ const pagination = () => {
         });
         editButton.addEventListener("click", () => {
           modalOpen("update");
-          const confirmationButtonLink = document.getElementById(
+          const confirmationButtonLink_update = document.getElementById(
             "edit-confirm-link"
           ); // aタグ
-          const url = `/update/${item.id}`;
-          confirmationButtonLink.setAttribute("href", url);
+          const url_update = `/update_channel/${item.id}`;
+          confirmationButtonLink_update.setAttribute("href", url_update);
         });
       }
       /////
