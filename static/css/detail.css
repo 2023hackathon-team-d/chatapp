@@ -43,6 +43,10 @@
   text-align: center;
 }
 
+a {
+  color: black;
+}
+
 .everytodo-contana {
   display: flex;
   flex-direction: column;

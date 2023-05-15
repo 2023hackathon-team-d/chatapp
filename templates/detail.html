@@ -12,7 +12,7 @@
         {% endif %}
         <p class="everyonetodo">みんなのTODOリスト</p>
         <ul id="everytodo-contana" class="everytodo-contana"></ul>
-
+        <a href="{{ url_for('todolist') }}">タスク一覧</a>
       </div>
       <div id="message-area">
         {% if messages|length > 0 %}
