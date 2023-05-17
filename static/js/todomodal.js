@@ -1,18 +1,13 @@
 // TODOリスト
 //モーダルを表示させる
 const addtodoModal = document.getElementById("add-todo-modal");
-const deletetodoModal = document.getElementById("delete-todo-modal");
 
 const addtodoPageButtonClose = document.getElementById("add-todopage-close-btn");
-const deletetodoPageButtonClose = document.getElementById("delete-todopage-close-btn");
 
 const addtodoBtn = document.getElementById("add-todo-btn");
 
 const addtodoConfirmBtn = document.getElementById(
   "add-todo-confirmation-btn"
-);
-const deletetodoConfirmBtn = document.getElementById(
-  "delete-todo-confirmation-btn"
 );
 
 // モーダルを開く

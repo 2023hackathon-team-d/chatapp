@@ -7,19 +7,19 @@
         <div class="mypage-img">
             <div class="selfinfo">
                 <div class="namaenoichi">
-                    <h1>ユーザーネームを表示</h1>
+                    <h1>ユーザーネーム</h1>
                     <button id="mydream-btn"><ion-icon name="create-outline"></ion-icon></button>
                 </div>
                 <p>ここには目標を表示する</p>
                 {% include 'modal/mydream.html' %}
             </div>
             <div class="mytasku">
-                <p>未完了のTODOリスト</p>
-                <div class="mytasku-midasi"><a class="taskuname">タスク</a><a class="limit">期限</a><a class="projects">チャンネル名</a></div>
+                <p>未完了のTODOリスト <button class="mytask-button" id="add-todo-btn"><ion-icon name="add-circle-outline"></ion-icon></button></p>
+                {% include 'modal/add-task.html' %}
+                <div class="mytasku-midasi"><a class="taskuname">タスク</a><a class="limit">期限</a></div>
                 <ul>
                     <li class="list-todo">UIデザイン </li>
                     <li class="list-limit">2023/04/16</li>
-                    <li class="list-channelname">夢はフロントエンドエンジニア</li>
                 </ul>
 
             </div>
@@ -31,4 +31,5 @@
         const channels = JSON.parse('{{ channels|tojson }}')
       </script>
       <script src="../static/js/mypagemodal.js"></script>
+     <script src="../static/js/todomodal.js"></script>
     {% endblock %}

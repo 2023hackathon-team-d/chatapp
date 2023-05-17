@@ -15,7 +15,8 @@
     background-position: top center;
     background-repeat:  no-repeat; 
     background-image: url("../img/mypage-top.jpg");
-    background-size: 75%;
+    background-size: 85%;
+    padding: 5px 5px 5px 5px;
   }
 
   .selfinfo {
@@ -62,6 +63,15 @@
     background-color: var(--lightmouse);
   }
 
+
+  .mytask-button{
+    background-color: var(--lightmouse);
+    color: var(--kuro);
+    margin: 0;
+    padding: 0;
+    line-height: 20px;
+  }
+
   .mytasku-midasi {
     padding: 10px 0px 0px 0px;
     color: black;
@@ -84,6 +94,7 @@
     margin-bottom: 10px;
     margin-top: 10px;
   }
+
 
   .taskuname {
     padding-left:5%;

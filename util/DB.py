@@ -7,7 +7,7 @@ class DB:
             host="localhost",
             db="chatapp",
             user="testuser",
-            password="testuser",
+            password="password",
             charset="utf8",
             cursorclass=pymysql.cursors.DictCursor
         )
