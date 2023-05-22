@@ -16,12 +16,13 @@ def signup():
     return render_template('registration/signup.html')
 
 # ユーザ登録
-@app.route('/signup', methods=['GET','POST'])
+@app.route('/signup', methods=['POST'])
 def userSignup():
-    name = request.form.get('name')
+    name = request.form.get('username')
     email = request.form.get('email')
     password1 = request.form.get('password1')
     password2 = request.form.get('password2')
+    
 
     pattern = "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"
 
@@ -35,6 +36,7 @@ def userSignup():
         uid = uuid.uuid4()
         password = hashlib.sha256(password1.encode('utf-8')).hexdigest()
         user = User(uid, name, email, password)
+        print(user.name,user.email,user.password,user.uid)
         DBuser = dbConnect.getUser(email)
 
         if DBuser != None:
@@ -84,7 +86,7 @@ def mypage():
     channels = dbConnect.getChannelAll()
     if uid is None:
         return redirect('/login')
-    return render_template('mypage.html', uid=uid, channels = channels )
+    return render_template('mypage.html', uid=uid, channels=channels)
            
 #チャットリスト
 @app.route('/')
@@ -124,11 +126,11 @@ def update_channel():
     cid = request.form.get('cid')
     channel_name = request.form.get('channel-title')
     channel_description = request.form.get('channel-description')
-    channels = dbConnect.getChannelAll()
+    
 
     dbConnect.updateChannel(uid, channel_name, channel_description, cid)
     channel = dbConnect.getChannelById(cid)
-     
+    channels = dbConnect.getChannelAll()
     return render_template('index.html',channels=channels, uid=uid, channel=channel)
 
 
@@ -159,11 +161,12 @@ def detail(cid):
     channel = dbConnect.getChannelById(cid)
     messages = dbConnect.getMessageAll(cid)
     task = dbConnect.gettaskByCId(cid)
+    print(messages)
 
     return render_template('detail.html', messages=messages, channel=channel, uid=uid, task=task)
 
 #メッセージ投稿
-@app.route('/message', methods=['GET','POST'])
+@app.route('/message', methods=['POST'])
 def add_message():
     uid = session.get("uid")
     if uid is None:
@@ -178,11 +181,12 @@ def add_message():
     channel = dbConnect.getChannelById(channel_id)
     messages = dbConnect.getMessageAll(channel_id)
     task = dbConnect.gettaskByCId(channel_id)
+    print(channel)
 
-    return render_template('detail.html', messages=messages, channel=channel, uid=uid,task=task)
+    return render_template('detail.html', messages=messages, channel=channel, uid=uid, task=task)
 
 # メッセージ削除
-@app.route('/delete_message', methods=['GET','POST'])
+@app.route('/delete_message', methods=['POST'])
 def delete_message():
     uid = session.get("uid")
     if uid is None:
@@ -200,7 +204,7 @@ def delete_message():
     return render_template('detail.html', messages=messages, channel=channel, uid=uid,task=task)
 
 # TODOLIST
-@app.route('/todolist', methods=['GET', 'POST'])
+@app.route('/todolist', methods=['POST'])
 def todolist():
     uid = session.get("uid")
     if uid is None:
@@ -214,14 +218,14 @@ def add_task():
     uid = session.get('uid')
     if uid is None:
         return redirect('/login')
-    title = request.form.get('title')
+    title = request.form.get('todo-title')
+    deadline = request.form.get('todo-limit')
     if title:
-        add_task_title = request.form.get('add_task_title')
-        dbConnect.addTask(uid, add_task_title)
+        dbConnect.addTask(uid, title, deadline)
     return redirect('/')
 
 # taskを編集
-@app.route('/update-task', methods=['GET','POST'])
+@app.route('/update-task', methods=['POST'])
 def update_task():
     uid = session.get('uid')
     if uid is None:
@@ -257,6 +261,5 @@ def show_error500(error):
 
 if __name__ == '__main__':
     app.run(debug=True)
-
 
 

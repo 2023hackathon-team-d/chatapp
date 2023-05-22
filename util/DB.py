@@ -6,8 +6,8 @@ class DB:
             conn = pymysql.connect(
             host="localhost",
             db="chatapp",
-            user="testuser",
-            password="password",
+            user="user",
+            password="testuser",
             charset="utf8",
             cursorclass=pymysql.cursors.DictCursor
         )

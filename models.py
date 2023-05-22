@@ -8,11 +8,11 @@ class dbConnect:
         try:
             conn = DB.getConnection()
             cur = conn.cursor()
-            sql = "INSERT INTO users (uid, user_name, email, password) VALUES (%s, %s, %s, %s);"
-            cur.execute(sql, (user.uid, user.name, user.email, user.password))
+            sql = "INSERT INTO users (uid, user_name, email, password, mydream) VALUES (%s, %s, %s, %s, %s);"
+            cur.execute(sql, (user.uid, user.name, user.email, user.password, ''))
             conn.commit()
         except Exception as e:
-            print('例外が発生しています')
+            print(e,'例外が発生しています')
             return None
         finally:
             cur.close()
@@ -24,7 +24,7 @@ class dbConnect:
             conn = DB.getConnection()
             cur = conn.cursor()
             sql = "SELECT * FROM users WHERE email=%s;"
-            cur.execute(sql, (email))
+            cur.execute(sql, (email,))
             user = cur.fetchone()
             return user
         except Exception as e:
@@ -54,7 +54,7 @@ class dbConnect:
             conn = DB.getConnection()
             cur = conn.cursor()
             sql = "SELECT * FROM channels WHERE id=%s;"
-            cur.execute(sql, (cid))
+            cur.execute(sql, (cid,))
             channel = cur.fetchone()
             return channel
         except Exception as e:
@@ -83,7 +83,7 @@ class dbConnect:
         try:
             conn = DB.getConnection()
             cur = conn.cursor()
-            sql = "INSERT INTO channels (uid, name, abstract) VALUES (%s, %s, %s);"
+            sql = "INSERT INTO channels (uid, channel_name, abstract) VALUES (%s, %s, %s);"
             cur.execute(sql, (uid, newChannelName, newChannelDescription))
             conn.commit()
         except Exception as e:
@@ -97,7 +97,7 @@ class dbConnect:
         try:
             conn = DB.getConnection()
             cur = conn.cursor()
-            sql = "SELECT * FROM channels WHERE name=%s;"
+            sql = "SELECT * FROM channels WHERE channel_name=%s;"
             cur.execute(sql, (channel_name))
             channel = cur.fetchone()
         except Exception as e:

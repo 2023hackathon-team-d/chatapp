@@ -33,7 +33,7 @@ const pagination = () => {
       const a = document.createElement("a");
       const li = document.createElement("li");
       const url = `/detail/${item.id}`;
-      a.innerText = item.name;
+      a.innerText = item.channel_name;
       a.setAttribute("href", url);
       a.classList.add("list_a");
       li.appendChild(a);

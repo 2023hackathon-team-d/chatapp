@@ -1,4 +1,5 @@
 DROP DATABASE chatapp;
+DROP USER 'user'@'localhost';
 
 CREATE USER 'user'@'localhost' IDENTIFIED BY 'testuser';
 CREATE DATABASE chatapp;
@@ -7,10 +8,10 @@ USE chatapp
 GRANT ALL PRIVILEGES ON chatapp.* TO 'user'@'localhost';
 
 CREATE TABLE users (
-    uid varchar(50) AUTO_INCREMENT PRIMARY KEY,
+    uid varchar(50) PRIMARY KEY,
     user_name varchar(50) UNIQUE NOT NULL,
     email varchar(50) UNIQUE NOT NULL,
-    password varchar(50) NOT NULL,
+    password varchar(255) NOT NULL,
     mydream varchar(50) NULL,
     create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
