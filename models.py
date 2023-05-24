@@ -43,7 +43,7 @@ class dbConnect:
             channels = cur.fetchall()
             return channels
         except Exception as e:
-            print('例外が発生しています')
+            print(e,'例外が発生しています')
             return None
         finally:
             cur.close()
@@ -58,7 +58,7 @@ class dbConnect:
             channel = cur.fetchone()
             return channel
         except Exception as e:
-            print('例外が発生しています')
+            print(e,'例外が発生しています')
             return None
         finally:
             cur.close()
@@ -73,7 +73,7 @@ class dbConnect:
             channel = cur.fetchone()
             return channel
         except Exception as e:
-            print('例外が発生しています')
+            print(e,'例外が発生しています')
             return None
         finally:
             cur.close()
@@ -191,19 +191,20 @@ class dbConnect:
             return None
         finally:
             cur.close()
-    def gettaskById(tid):
+    def gettaskById(uid):
         try:
             conn = DB.getConnection() 
             cur = conn.cursor() 
-            sql = "SELECT * FROM channels WHERE id=%s;"
-            cur.execute(sql, (tid)) 
-            tskd = cur.fetchone() 
-            return tskd
+            sql = "SELECT * FROM tasks WHERE uid=%s;"
+            cur.execute(sql, (uid)) 
+            tasks = cur.fetchone() 
+            return tasks
         except Exception as e:
             print(str(e)+ 'が発生しています')
             return None
         finally:
             cur.close()
+
     def gettaskByCId(cid):
             try:
                 conn = DB.getConnection() 
@@ -222,7 +223,7 @@ class dbConnect:
             try:
                 conn = DB.getConnection() 
                 cur = conn.cursor() 
-                sql = "INSERT INTO tasks (uid, name, abstract) VALUES (%s, %s, %s);"
+                sql = "INSERT INTO tasks (uid, task, limit_date) VALUES (%s, %s, %s);"
                 cur.execute(sql, (uid, newtaskName, newtaskDescription)) 
                 conn.commit() 
             except Exception as e:
@@ -266,3 +267,31 @@ class dbConnect:
                 return None
             finally:
                 cur.close()
+
+    def dream(mydream, uid):
+            try:
+                conn = DB.getConnection()
+                cur = conn.cursor()
+                sql = "UPDATE users SET mydream=%s WHERE uid=%s;"
+                cur.execute(sql, (mydream, uid))
+                conn.commit()
+            except Exception as e:
+                print(str(e)+ 'が発生しています')
+                return None
+
+            finally:
+                cur.close()
+
+    def getdream(uid):
+        try:
+            conn = DB.getConnection()
+            cur = conn.cursor()
+            sql = "SELECT * FROM users WHERE uid=%s;"
+            cur.execute(sql, (uid,))
+            users = cur.fetchone()
+            return users
+        except Exception as e:
+            print('例外' + str(e) + 'が発生しています')
+            return None
+        finally:
+            cur.close()            

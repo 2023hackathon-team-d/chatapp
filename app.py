@@ -84,9 +84,11 @@ def logout():
 def mypage():
     uid = session.get('uid')
     channels = dbConnect.getChannelAll()
+    tasks = dbConnect.gettaskById(uid)
+    users = dbConnect.getdream(uid)
     if uid is None:
         return redirect('/login')
-    return render_template('mypage.html', uid=uid, channels=channels)
+    return render_template('mypage.html', uid=uid, channels=channels, tasks=tasks, users=users)
            
 #チャットリスト
 @app.route('/')
@@ -203,26 +205,18 @@ def delete_message():
 
     return render_template('detail.html', messages=messages, channel=channel, uid=uid,task=task)
 
-# TODOLIST
-@app.route('/todolist', methods=['POST'])
-def todolist():
-    uid = session.get("uid")
-    if uid is None:
-        return redirect('/login')
-    else:
-        return render_template('todolist.html', uid=uid)
     
 # taskを作成
-@app.route('/add-task', methods=['GET','POST'])
+@app.route('/add-task', methods=['POST'])
 def add_task():
     uid = session.get('uid')
     if uid is None:
         return redirect('/login')
-    title = request.form.get('todo-title')
+    title = request.form.get('todo-name')
     deadline = request.form.get('todo-limit')
     if title:
-        dbConnect.addTask(uid, title, deadline)
-    return redirect('/')
+        dbConnect.task(uid, title, deadline)
+    return redirect('/mypage')
 
 # taskを編集
 @app.route('/update-task', methods=['POST'])
@@ -247,6 +241,22 @@ def delete_ask(tid):
     if task:
         dbConnect.deleteTask(uid, tid)
     return redirect('/')
+
+# dreamを追加
+@app.route('/add-dream', methods=['POST'])
+def add_dream():
+    uid = session.get('uid')
+    if uid is None:
+        return redirect('/login')
+
+    mydream = request.form.get('mydream')
+
+    if mydream:
+        dbConnect.dream(mydream,uid)
+
+        return redirect('/mypage')
+
+
 
 #HTTPレスポンスエラー
 @app.errorhandler(404)

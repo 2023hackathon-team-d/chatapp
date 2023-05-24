@@ -35,6 +35,7 @@ CREATE TABLE messages (
 
 CREATE TABLE tasks (
     id INT AUTO_INCREMENT PRIMARY KEY,
+    uid varchar(50) REFERENCES users(uid),
     task varchar(50),
     limit_date datetime,
     create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
