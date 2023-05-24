@@ -197,7 +197,7 @@ class dbConnect:
             cur = conn.cursor() 
             sql = "SELECT * FROM tasks WHERE uid=%s;"
             cur.execute(sql, (uid)) 
-            tasks = cur.fetchone() 
+            tasks = cur.fetchall() 
             return tasks
         except Exception as e:
             print(str(e)+ 'が発生しています')

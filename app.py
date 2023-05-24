@@ -86,6 +86,7 @@ def mypage():
     channels = dbConnect.getChannelAll()
     tasks = dbConnect.gettaskById(uid)
     users = dbConnect.getdream(uid)
+    print(tasks)
     if uid is None:
         return redirect('/login')
     return render_template('mypage.html', uid=uid, channels=channels, tasks=tasks, users=users)
