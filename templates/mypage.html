@@ -22,7 +22,10 @@
                 <div class="mytasku-midasi"><a class="taskuname">タスク</a><a class="limit">期限</a></div>
                 <ul class="todo">
                     {% for task in tasks %}
-                    <li class="list-todo">{{ task.task }}   {{ task.limit_date }}</li>
+                    <div class="todo-yoko">
+                    <li class="list-todo">{{ task.task }}</li>
+                    <li class="list-limit">{{ task.limit_date }}</li>
+                    </div>
                     {% endfor %}
                 </ul>
             </div>

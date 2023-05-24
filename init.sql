@@ -37,7 +37,7 @@ CREATE TABLE tasks (
     id INT AUTO_INCREMENT PRIMARY KEY,
     uid varchar(50) REFERENCES users(uid),
     task varchar(50),
-    limit_date datetime,
+    limit_date date,
     create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     update_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
