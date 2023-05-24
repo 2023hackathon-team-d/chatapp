@@ -180,10 +180,67 @@ button:hover {
   .registration-main {
     font-size: 150px;
   }
+
 }
+
 
 @media screen and (min-width: 1024px) {
   .registration-main {
     font-size: 150px;
   }
+
+}
+
+
+@media screen and (max-width:479px) {
+  .registration-main {
+    font-size: 50px;
+  }
+  .registration-title {
+    font-size: 50px;
+  }
+
+  .infinite-icon {
+    font-size: 50px;
+  }
+  
+  .registration-main.login-main {
+    height: 100%;
+    width: 100%;
+    background-position: top center;
+    background-size: contain;
+    background-repeat:  no-repeat; 
+    background-image: url("../img/mobile_login.jpg");
+    object-fit: cover;
+    margin:0;
+    padding:0;
+  }
+  
+
+  .email-form{
+    width: 90%;
+  }
+
+  .password-form{
+    width: 90%;
+  }
+  
+
+  .username-form{
+    width: 90%;
+  }
+
+  .registration-main.signup-main {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    background-size: contain;
+    background-position: 50% 15%;
+    background-repeat:  no-repeat; 
+    background-image: url("../img/accout-page.jpg");
+    vertical-align:top;
+  }
+  
+  
+
 }

@@ -37,24 +37,7 @@
   font-size: small;
 }
 
-.everyonetodo {
-  font-size: 20px;
-  font-weight: 100;
-  text-align: center;
-}
 
-a {
-  color: black;
-}
-
-.everytodo-contana {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  background-color: var(--snow);
-}
 /* メッセージエリア */
 
 #message-area {
@@ -120,6 +103,8 @@ a {
   font-size: 14px;
   line-height: 1.5;
   letter-spacing: 0.1em;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 .box-left {
@@ -225,4 +210,53 @@ a {
   .box {
     width: 40%;
   }
+}
+
+@media screen and (max-width:479px) {
+  #chat-header {
+    display: none;
+  }
+
+  #message-area {
+    min-height: 100%;
+    width: 100%;
+    padding: 2px;
+    margin: 5px;
+    margin-top: 20%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    z-index: 10;
+    background-image: url("../img/mb_chat.JPG");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: 50% 40%;
+  }
+
+  .typing-box-wrapper {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 15vh;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    z-index: 60;
+    padding: 0;
+    background-color: transparent;
+  }
+
+  .typing-box {
+    height: 80%;
+    width: 95%;
+    margin: auto;
+    position: relative;
+    border-radius: 10px;
+    border: 2px solid gray;
+    z-index: 70;
+  }
+  
+
 }

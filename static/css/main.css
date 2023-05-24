@@ -208,3 +208,12 @@
   }
 }
 
+@media screen and (max-width:479px) {
+
+  .channel-title h1 {
+    font-size: 30px;
+    font-weight: normal;
+   }
+
+   
+}
