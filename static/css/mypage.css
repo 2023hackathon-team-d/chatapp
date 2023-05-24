@@ -15,7 +15,7 @@
     background-position: top center;
     background-repeat:  no-repeat; 
     background-image: url("../img/mypage-top.jpg");
-    background-size: 85%;
+    background-size: 80%;
     padding: 5px 5px 5px 5px;
   }
 
@@ -56,9 +56,14 @@
     margin-top: 7%;
   }
 
+  .todotitle {
+    display: flex;
+    background-color: var(--lightmouse);
+  }
+
   .mytasku p {
-    padding: 10px 10px 10px 10px;
-    margin-bottom: 0px;
+    padding: 10px;
+    margin: 5px;
     font-size: 15px;
     background-color: var(--lightmouse);
   }
@@ -67,10 +72,12 @@
   .mytask-button{
     background-color: var(--lightmouse);
     color: var(--kuro);
-    margin: 0;
-    padding: 0;
-    line-height: 20px;
+    margin: 0px;
+    padding: 0px;
+    vertical-align: middle;
   }
+
+
 
   .mytasku-midasi {
     padding: 10px 0px 0px 0px;
@@ -110,14 +117,6 @@
     box-sizing: border-box;
   }
 
-
-  .projects {
-    padding-left:10%;
-    color: #000000;
-    font-size: 15px;
-    box-sizing: border-box;
-  }
-
   .list-todo::before {
     content:  "";/* 空の要素作成 */
     width: 20px;                            /* 幅指定 */
@@ -135,6 +134,7 @@
   .list-todo {
     width:65%;
     display:inline-block;
+    color: #000000;
   }
 
 
@@ -149,3 +149,58 @@
     display:inline-block;
     padding-left: 5px;
   }
+
+  .todo_limit {
+    border-bottom: 1px solid lightgrey;
+    width:70%;
+  }
+
+  
+
+
+@media screen and (max-width:479px) {
+
+  .selfinfo {
+    padding-top: 10%;
+
+  }
+  .namaenoichi {
+    width: 80%;
+  }
+
+
+  .namaenoichi h1 {
+    flex-grow: 1;
+    font-size: 30px;
+  }
+
+  .todotitle {
+    background-color: var(--lightmouse);
+  }
+
+  .mytasku p {
+    padding: 15px 0px;
+    margin: 3px;
+    font-size: 15px;
+    background-color: var(--lightmouse);
+    text-align: center;
+  }
+
+  .mypage-img {
+    height: 100%;
+    background-position: 50% 16%;
+    background-repeat:  no-repeat; 
+    background-image: url("../img/mypage-top.jpg");
+    background-size: 100%;
+    padding: 5px 5px 5px 5px;
+  }
+
+  .mytasku {
+    display: block;
+    width: 100%;
+    height: 80%;
+    position: center center;
+    background-color: var(--snow);
+    margin-top: 25%;
+  }
+}

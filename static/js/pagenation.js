@@ -9,6 +9,7 @@ const pagination = () => {
       ? channels.length / STEP
       : Math.floor(channels.length / STEP) + 1;
 
+
   // <ul class="pagination"></ul> の中身(li)を書き換える
   const paginationUl = document.querySelector(".pagination");
   let pageCount = 0;
