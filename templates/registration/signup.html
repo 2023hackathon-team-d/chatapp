@@ -1,0 +1,45 @@
+{% extends 'registration/base.html' %}
+{% block title %}
+  <title>Create an account</title>
+{% endblock %}
+{% block body %}
+<div class="registration-wrapper signup">
+  <div class="registration-main signup-main">
+      <div class="registration-main">
+        <h1 class="registration-title-signup">Create an account</h1> 
+            <form class="registration-form" method="post">
+              <div class="username-form">
+                <input type="text" placeholder="user name" name="username" />
+              </div>
+              <div class="email-form">
+                <input type="text" placeholder="email" name="email" />
+              </div>
+              <div class="email-form">
+                <input type="password" placeholder="password" name="password1" />
+              </div>
+              <div class="email-form">
+                <input
+                type="password"
+                placeholder=" confirm password"
+                name="password2"
+              />
+              </div>
+              <button>Registar</button>
+              {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                  <ul class="flashes">
+                    {% for message in messages %}
+                    <li>{{ message }}</li>
+                    {% endfor %}
+                  </ul>
+                {% endif %}
+              {% endwith %}
+              <a class="switch-register-mode" href="{{ url_for('login') }}">
+              Back login page
+              </a>
+            </form>
+          </div>
+        </div>
+      </div>
+</div>
+{% endblock %}

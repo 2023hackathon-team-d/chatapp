@@ -1,0 +1,21 @@
+<div id="burger-icon">
+  <ul>
+    <li class="m_list_active">
+      <a href="{{ url_for('mypage') }}">
+        <span class="icon"><ion-icon name="home-sharp"></ion-icon></span>
+        <span class="title">My page</span>
+      </a>
+    </li>
+    <li class="m_list_active">
+      <a href="{{ url_for('index') }}">
+        <span class="icon"><ion-icon name="list-sharp"></ion-icon></span>
+        <span class="title">Channel Lists</span>
+      </a>
+    </li>
+    <li class="m_list_active_logout">
+      <a href="{{ url_for('logout') }}">
+        <span class="icon"><ion-icon name="log-out-sharp"></ion-icon></span>
+      </a>
+    </li>
+  </ul>
+</div>

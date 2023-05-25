@@ -1,0 +1,29 @@
+<div id="add-todo-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5>タスクの登録</h5>
+        <span class="todomodalClose" id="add-todopage-close-btn">×</span>
+      </div>
+      <form class="modal-body" action="/add-task" method="POST">
+        <input
+          type="text"
+          placeholder="task name"
+          class="channel-form-input"
+          name="todo-name"
+        />
+        <div class="todo_limit">
+        <label 
+        for="todolimit">Limit:
+        <input
+          type="date"
+          placeholder="category"
+          class="todo-form-input"
+          name="todo-limit"
+          id="todolimit"
+        /></label>
+        </div>
+        <button id="add-todo-confirmation-btn">ADD</button>
+      </form>
+    </div>
+  </div>
+  

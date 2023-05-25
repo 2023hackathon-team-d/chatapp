@@ -1,0 +1,25 @@
+<div id="update-channel-modal" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5>チャンネルの編集</h5>
+      <span class="modalClose" id="update-page-close-btn">×</span>
+    </div>
+    <form class="modal-body" action="/update_channel" method="POST">
+      <input
+        type="text"
+        placeholder="change channel name"
+        class="channel-form-input"
+        name="channel-title"
+      />
+      <input
+        type="text"
+        placeholder="change channel detail"
+        class="channel-form-input"
+        name="channel-description"
+      />
+      <input type="hidden" name='cid' id="edit-cid" value=0>
+        <button>Edit</button>
+    </form>
+    
+  </div>
+</div>

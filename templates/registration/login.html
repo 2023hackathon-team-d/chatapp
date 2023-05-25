@@ -1,0 +1,35 @@
+{% extends 'registration/base.html' %}
+{% block title %}
+  <title>login</title>
+{% endblock %}
+{% block body %}
+  <div class="registration-wrapper login">
+    <div class="registration-main">
+        <h1 class="registration-title">SOU<ion-icon name="infinite" class="infinite-icon"></ion-icon>ZOU</h1>
+          <div class="registration-main login-main">   
+            <form class="registration-form" method="post">
+                <!-- ログインフォームの送信方法などを指定している　POSTメソッドで送信 -->
+                <div class="email-form">
+                  <input type="text" placeholder="Email" name="email" />
+                </div>
+                  <div class="password-form">
+                  <input type="password" placeholder="Password" name="password" />
+                </div>
+                <button>LOGIN</button>
+                {% with messages = get_flashed_messages() %}
+                  {% if messages %}
+                    <ul class="flashes">
+                      {% for message in messages %}
+                        <li>{{ message }}</li>
+                      {% endfor %}
+                    </ul>
+                  {% endif %}
+                {% endwith %}
+                <a class="switch-register-mode" href="{{ url_for('signup') }}">
+                  Create an account
+                </a>
+              </div>
+            </form>
+    </div>
+  </div>
+{% endblock %}

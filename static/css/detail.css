@@ -1,0 +1,262 @@
+.main-container {
+  padding-left: 0px;
+}
+
+.chat-box {
+  min-height: 100vh;
+  width: 100%;
+  background-color: var(--snow);
+  z-index: 30;
+  display: flex;
+  flex-direction: column;
+}
+
+
+#chat-header {
+  background-color: var(--lightmouse);
+  margin-top: 3.9%;
+  height: 100%;
+  width: 19%;
+  position: fixed;
+  top: 0;
+  color: var(--kuro);
+  font-weight: 600;
+  flex-flow: column;
+  align-items: center;
+  z-index: 40;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+#chatroom-name {
+  font-size: larger;
+  margin-top: 10%;
+}
+
+#chatroom-description {
+  font-size: small;
+}
+
+
+/* メッセージエリア */
+
+#message-area {
+  min-height: 100vh;
+  width: 100%;
+  padding-top: calc(8vh + 10px);
+  padding-right: 20px;
+  padding-bottom: calc(20vh + 10px);
+  padding-left: 300px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  z-index: 10;
+  background-image: url("../img/toukago-chatbox.JPG");
+  background-repeat: no-repeat;
+  background-size: 85% 93%;
+  background-position: right bottom;
+}
+
+.messages {
+  display: flex;
+  flex-direction: column;
+  color: var(--kuro);
+  z-index: 50;
+}
+
+.user-name {
+  font-size: 8px;
+  color: var(--kuro);
+}
+
+.my-messages {
+  display: flex;
+  z-index: 50;
+}
+
+.delete-message-btn {
+  background-color: var(--snow);
+  height: 40px;
+  width: 40px;
+  line-height: 47px;
+  padding: 0;
+  margin: 0;
+  bottom: 8px;
+  right: 8px;
+  color: var(--kuro);
+}
+
+.delete-message-btn ion-icon {
+  font-size: 1rem;
+}
+
+.box {
+  position: relative;
+  width: 60%;
+  margin: 0;
+  padding: 0.7em 0 0.4em 1em;
+  border-radius: 10px;
+  color: var(--kuro);
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 1.5;
+  letter-spacing: 0.1em;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+.box-left {
+  border: 1px solid var(--kuro);
+  background-color: var(--snow);
+}
+
+.box-right {
+  border: 1px solid var(--kuro);
+  background-color: var(--snow);
+  margin-left: auto;
+  margin-right: 10px;
+}
+
+
+
+/* ========================================================== */
+
+.typing-box-wrapper {
+  position: fixed;
+  bottom: 0;
+  width: calc(100vw - 70px);
+  height: 15vh;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  padding-left: 200px;
+  z-index: 60;
+}
+
+.typing-box {
+  height: 80%;
+  width: 80%;
+  margin: auto;
+  position: relative;
+  border-radius: 10px;
+  border: 2px solid gray;
+  z-index: 70;
+}
+
+.typing-box textarea {
+  width: 100%;
+  padding: 4px 55px 4px 12px;
+  border-radius: 10px;
+  z-index: 80;
+  background: rgba(245, 245, 245, 0.6);
+}
+
+.typing-box textarea:focus {
+  cursor: pointer;
+}
+
+#add-message-btn {
+  position: absolute;
+  background-color: transparent;
+  height: 40px;
+  width: 40px;
+  line-height: 47px;
+  padding: 0;
+  margin: 0;
+  bottom: 8px;
+  right: 8px;
+  color: var(--kuro);
+}
+
+#add-message-btn ion-icon {
+  font-size: 1.3rem;
+}
+
+#gif {
+  z-index: 100;
+  position: fixed;
+  bottom: 0;
+  left: 20px;
+}
+
+@media screen and (max-width: 550px) {
+  #chatroom-description {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 639px) {
+  .chat-box {
+    padding-left: 0;
+  }
+
+  .typing-box-wrapper,
+  #chat-header {
+    width: 100%;
+  }
+
+  .typing-box textarea {
+    padding: 0;
+  }
+
+  #gif {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 640px) {
+  .box {
+    width: 40%;
+  }
+}
+
+@media screen and (max-width:479px) {
+  #chat-header {
+    display: none;
+  }
+
+  #message-area {
+    min-height: 100%;
+    width: 100%;
+    padding: 2px;
+    margin: 5px;
+    margin-top: 20%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    z-index: 10;
+    background-image: url("../img/mb_chat.JPG");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: 50% 40%;
+  }
+
+  .typing-box-wrapper {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 15vh;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    z-index: 60;
+    padding: 0;
+    background-color: transparent;
+  }
+
+  .typing-box {
+    height: 80%;
+    width: 95%;
+    margin: auto;
+    position: relative;
+    border-radius: 10px;
+    border: 2px solid gray;
+    z-index: 70;
+  }
+  
+
+}
